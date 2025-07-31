@@ -39,7 +39,7 @@ public partial class Player : CharacterBody3D
 		Vector3 prev_horizontal_velocity = ProjectOntoPlane(velocity, UpDirection);
 		velocity -= prev_horizontal_velocity;
 		// Add new horizontal velocity
-		velocity += movement * speed;
+		velocity += movement * speed * Scale.X; // Scale.X is used to adjust speed based on the player's scale
 		if (IsOnFloor())
 		{
 			if (Input.IsActionJustPressed("jump"))

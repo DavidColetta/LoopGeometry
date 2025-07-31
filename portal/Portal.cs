@@ -186,10 +186,10 @@ public partial class Portal : Area3D
 		portal_viewport.UseOcclusionCulling = GetViewport().UseOcclusionCulling;
 		portal_viewport.MeshLodThreshold = GetViewport().MeshLodThreshold;
 	}
-	// private void UpdatePortalCameraNearClipPlane()
-	// {
+	private void UpdatePortalCameraNearClipPlane()
+	{
 		
-	// }
+	}
 	private void ThickenPortalIfNecessary()
 	{
 		var cur_camera = GetViewport().GetCamera3D();
