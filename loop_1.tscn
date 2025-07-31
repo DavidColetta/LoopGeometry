@@ -41,3 +41,7 @@ portal_size = Vector2(1.6, 3.2)
 
 [node name="PortalTarget" type="Node3D" parent="."]
 transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -2, 1.6, 2.2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9816895, 3.1756835, 0)
+size = Vector3(7.963379, 0.15136719, 6)

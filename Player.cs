@@ -13,43 +13,51 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// Update up direction based on current orientation
+		UpDirection = GlobalBasis.Y.Normalized();
 		base._PhysicsProcess(delta);
 
 		Vector3 velocity = Velocity;
 
-		if (IsOnFloor())
+		// Handle jumping - now works from any surface
+		if (IsOnFloor() && Input.IsActionJustPressed("jump"))
 		{
-			if (Input.IsActionJustPressed("jump"))
-			{
-				velocity.Y = jump_speed;
-			}
+			velocity += Transform.Basis.Y * jump_speed;
 		}
-		else
+		else if (!IsOnFloor())
 		{
-			velocity.Y -= gravity * (float)delta;
+			GD.Print("Player is not on floor, applying gravity");
+			// Apply gravity in current down direction
+			velocity -= Transform.Basis.Y * gravity * (float)delta;
 		}
 
+		// Get camera-relative input
 		Vector2 input_vector = Input.GetVector("left", "right", "forward", "backward");
 		input_vector = input_vector.Normalized();
 
-		//make vector relative to camera
 		Camera3D camera = GetNode<Camera3D>("Camera3D");
 		if (camera != null)
 		{
+			// Get camera vectors in global space
 			Vector3 camera_forward = camera.GlobalTransform.Basis.Z;
 			Vector3 camera_right = camera.GlobalTransform.Basis.X;
-			camera_forward.Y = 0; // ignore vertical component
-			camera_right.Y = 0; // ignore vertical component
+
+			// Project onto player's movement plane (perpendicular to player's up)
+			camera_forward = camera_forward - Transform.Basis.Y * camera_forward.Dot(Transform.Basis.Y);
+			camera_right = camera_right - Transform.Basis.Y * camera_right.Dot(Transform.Basis.Y);
+
 			camera_forward = camera_forward.Normalized();
 			camera_right = camera_right.Normalized();
-			velocity.X = input_vector.X * camera_right.X + input_vector.Y * camera_forward.X;
-			velocity.Z = input_vector.X * camera_right.Z + input_vector.Y * camera_forward.Z;
+
+			// Calculate movement in world space but constrained to player's local plane
+			Vector3 movement = (camera_right * input_vector.X + camera_forward * input_vector.Y) * speed * Scale.X;
+
+			// Convert to player's local space for proper wall/ceiling movement
+			velocity.X = movement.X;
+			velocity.Z = movement.Z;
 		}
 
-		float scaled_speed = speed * Scale.X; // assuming uniform scaling
-
-		velocity.X *= scaled_speed;
-		velocity.Z *= scaled_speed;
+		// 
 
 		Velocity = velocity;
 		MoveAndSlide();
