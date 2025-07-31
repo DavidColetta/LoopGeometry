@@ -55,7 +55,7 @@ operation = 2
 size = Vector3(2, 2, 1.8000001)
 
 [node name="Ramp2" type="CSGBox3D" parent="CSGBox3D2"]
-transform = Transform3D(1, 7.571035e-08, -4.371141e-08, 8.7422784e-08, -0.86602527, 0.5, -7.1054274e-15, -0.5, -0.86602527, 0.5, 3.1464462, -0.244524)
+transform = Transform3D(-1.3113417e-07, 0.86602527, -0.5, 1, 1.1356552e-07, -6.556711e-08, -7.1054274e-15, -0.5, -0.86602527, -5.8, 3.1464462, -0.244524)
 size = Vector3(1, 1, 12)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2/Ramp2"]
