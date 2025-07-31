@@ -103,7 +103,7 @@ public partial class Portal : Area3D
 	{
 		if (body is not Player player)
 			return;
-		GD.Print("Moving player to other portal");
+		// GD.Print("Moving player to other portal");
 		Transform3D transform_rel_this_portal = GlobalTransform.AffineInverse() * player.GlobalTransform;
 		Transform3D moved_to_other_portal = target.GlobalTransform * transform_rel_this_portal;
 		player.GlobalTransform = moved_to_other_portal;
