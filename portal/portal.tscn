@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://1ba0m41x6mop"]
+
+[ext_resource type="Script" uid="uid://bod5e7801vaou" path="res://portal/Portal.cs" id="1_508n2"]
+[ext_resource type="Shader" uid="uid://cw8k253syncxn" path="res://portal/portal.gdshader" id="1_sfjos"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0r486"]
+size = Vector3(1.2, 1.2, 0.2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0r486"]
+viewport_path = NodePath("CameraViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq8q7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_sfjos")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_0r486")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_508n2"]
+size = Vector3(1, 1, 0.1)
+
+[node name="Portal" type="Area3D"]
+script = ExtResource("1_508n2")
+
+[node name="CameraViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraViewport"]
+visible = false
+cull_mask = 1048567
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0r486")
+debug_fill = false
+
+[node name="PortalVisual" type="CSGBox3D" parent="."]
+layers = 8
+size = Vector3(1, 1, 0.01)
+material = SubResource("ShaderMaterial_pq8q7")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1, -1, -0.1, 2, 2, 0.2)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("BoxShape3D_508n2")
+target_position = Vector3(0, 0, 0)
