@@ -49,6 +49,9 @@ public partial class Portal : Area3D
 
 		portal_visual.Size = new Vector3(portal_size.X, portal_size.Y, 0.01f);
 
+		if (!portal_camera.HasMethod("set_override_projection"))
+			GD.PrintErr("Portal camera does not have set_override_projection method, cannot set near clip plane. Please use custom Godot Build with this method implemented.");
+
 		visible_on_screen_notifier.ScreenEntered += ScreenEntered;
 		visible_on_screen_notifier.ScreenExited += ScreenExited;
 
@@ -57,6 +60,8 @@ public partial class Portal : Area3D
 
 		UpdatePortalAreaSize();
 		SetPortalCameraEnvironmentToWorld3DEnvironmentNoTonemap();
+
+		
 
 		RenderingServer.FramePreDraw += DoUpdates;
 	}
@@ -185,11 +190,64 @@ public partial class Portal : Area3D
 		portal_viewport.UseDebanding = GetViewport().UseDebanding;
 		portal_viewport.UseOcclusionCulling = GetViewport().UseOcclusionCulling;
 		portal_viewport.MeshLodThreshold = GetViewport().MeshLodThreshold;
+
+		UpdatePortalCameraNearClipPlane();
 	}
 	private void UpdatePortalCameraNearClipPlane()
 	{
-		
+		if (!portal_camera.HasMethod("set_override_projection"))
+			return;
+
+		const float NEAR_CLIP_OFFSET = 0.05f;
+		const float NEAR_CLIP_LIMIT = 0.1f;
+
+		var clip_plane = target.GlobalTransform;
+
+		var clip_plane_forward = -clip_plane.Basis.Z;
+		var portal_side = NonZeroSign(clip_plane_forward.Dot(target.GlobalPosition - portal_camera.GlobalPosition));
+
+		var cam_space_pos = portal_camera.GetCameraTransform().AffineInverse() * clip_plane.Origin;
+		var cam_space_normal = portal_camera.GetCameraTransform().AffineInverse().Basis * clip_plane_forward * portal_side;
+		var cam_space_dist = -cam_space_pos.Dot(cam_space_normal) + NEAR_CLIP_OFFSET;
+
+		if (Math.Abs(cam_space_dist) > NEAR_CLIP_LIMIT)
+		{
+			Projection proj = portal_camera.GetCameraProjection();
+			Plane near_clip_plane = new Plane(cam_space_normal, cam_space_dist);
+			proj = SetProjectionObliqueNearPlane(proj, near_clip_plane);
+			portal_camera.Call("set_override_projection", proj);
+		}
+		else
+		{
+			portal_camera.Call("set_override_projection", new Projection(Vector4.Zero, Vector4.Zero, Vector4.Zero, Vector4.Zero)); // Reset to default projection
+		}
+
 	}
+
+	public Projection SetProjectionObliqueNearPlane(Projection matrix, Plane clip_plane)
+	{
+		// # Based on the paper
+		// # Lengyel, Eric. “Oblique View Frustum Depth Projection and Clipping”.
+		// # Journal of Game Development, Vol. 1, No. 2 (2005), Charles River Media, pp. 5–16.
+
+		Vector4 q = new Vector4(
+			(Math.Sign(clip_plane.X) + matrix.Z.X) / matrix.X.X,
+			(Math.Sign(clip_plane.Y) + matrix.Z.Y) / matrix.Y.Y,
+			-1.0f,
+			(1.0f + matrix.Z.Z) / matrix.W.Z
+		);
+
+		Vector4 clip_plane4 = new Vector4(clip_plane.X, clip_plane.Y, clip_plane.Z, clip_plane.D);
+
+		Vector4 c = clip_plane4 * (2.0f / clip_plane4.Dot(q));
+
+		matrix.X.Z = c.X - matrix.X.W;
+		matrix.Y.Z = c.Y - matrix.Y.W;
+		matrix.Z.Z = c.Z - matrix.Z.W;
+		matrix.W.Z = c.W - matrix.W.W;
+		return matrix;
+	}
+
 	private void ThickenPortalIfNecessary()
 	{
 		var cur_camera = GetViewport().GetCamera3D();
