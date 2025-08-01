@@ -181,16 +181,16 @@ public partial class Portal : Area3D
 
 	public void DoUpdatesIfVisible()
 	{
+		foreach (Node3D body in GetBodiesWhichPassedThroughThisFrame())
+		{
+			MoveToOtherPortal(body);
+		}
 		if (!Visible) return;
 		DoUpdates();
 	}
 
 	public void DoUpdates()
 	{
-		foreach (Node3D body in GetBodiesWhichPassedThroughThisFrame())
-		{
-			MoveToOtherPortal(body);
-		}
 		UpdateCameraToOtherPortal();
 		ThickenPortalIfNecessary();
 	}
