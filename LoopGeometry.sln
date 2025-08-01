@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopGeometry", "LoopGeometry.csproj", "{95306266-F6B2-4E09-B841-1DD03675A0E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoopGeometry", "LoopGeometry.csproj", "{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{95306266-F6B2-4E09-B841-1DD03675A0E7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{6A9ACEAB-B5F1-4EBF-833B-32AAFFEEF109}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

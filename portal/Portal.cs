@@ -5,7 +5,8 @@ using System.Drawing;
 [Tool]
 public partial class Portal : Area3D
 {
-	[Export] Node3D target;
+	[Signal] public delegate void PortalUsedEventHandler(Node3D body);
+	[Export] public Node3D target;
 	// [Export] public int cull_layer = 4;
 	[Export] public Vector2 portal_size {get => _portal_size; set
 		{
@@ -108,10 +109,16 @@ public partial class Portal : Area3D
 	{
 		if (body is not Player player)
 			return;
-		// GD.Print("Moving player to other portal");
+		GD.Print("Moving player to other portal");
 		Transform3D transform_rel_this_portal = GlobalTransform.AffineInverse() * player.GlobalTransform;
 		Transform3D moved_to_other_portal = target.GlobalTransform * transform_rel_this_portal;
 		player.GlobalTransform = moved_to_other_portal;
+
+		World3D world = GetViewport().World3D;//Update the sky rotation of the world environment to match the target portal's rotation
+		if (world != null && world.Environment != null)//This allows shading to be seamless.
+		{
+			world.Environment.SkyRotation = world.Environment.SkyRotation + target.GlobalRotation - GlobalRotation;
+		}
 
 		RemoveTrackedPhysicsBody(player);
 		if (target is Portal target_portal)
@@ -119,6 +126,8 @@ public partial class Portal : Area3D
 			// target_portal.AddTrackedPhysicsBody(player);
 			target_portal.DoUpdates();
 		}
+		
+		EmitSignal(SignalName.PortalUsed, body);
 	}
 
 	private void UpdatePortalAreaSize()
@@ -190,6 +199,8 @@ public partial class Portal : Area3D
 		portal_viewport.UseDebanding = GetViewport().UseDebanding;
 		portal_viewport.UseOcclusionCulling = GetViewport().UseOcclusionCulling;
 		portal_viewport.MeshLodThreshold = GetViewport().MeshLodThreshold;
+
+		UpdatePortalCameraEnvironment();
 
 		UpdatePortalCameraNearClipPlane();
 	}
@@ -275,7 +286,7 @@ public partial class Portal : Area3D
 			return;
 		}
 
-		var thickness = 1f;
+		var thickness = 2f;
 		portal_visual.Size = new Vector3(portal_size.X, portal_size.Y, thickness);
 		if (portal_side == 1)
 		{
@@ -294,6 +305,16 @@ public partial class Portal : Area3D
 			return;
 		portal_camera.Environment = (Godot.Environment)world.Environment.Duplicate();
 		portal_camera.Environment.TonemapMode = Godot.Environment.ToneMapper.Linear;
+		portal_camera.Environment.SkyRotation = world.Environment.SkyRotation + target.GlobalRotation - GlobalRotation; // Match the sky rotation of the target portal
+	}
+
+	private void UpdatePortalCameraEnvironment()
+	{
+		World3D world = GetViewport().World3D;
+		if (world == null || world.Environment == null)
+			return;
+
+		portal_camera.Environment.SkyRotation = world.Environment.SkyRotation + target.GlobalRotation - GlobalRotation; // Match the sky rotation of the target portal
 	}
 
 	private bool CheckShapecastCollision(Node3D body)

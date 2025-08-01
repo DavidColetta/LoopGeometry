@@ -13,6 +13,7 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// Scale = new Vector3(Math.Abs(Scale.X), Math.Abs(Scale.Y), Math.Abs(Scale.Z)); // Ensure scale is non-negative
 		// Update up direction based on current orientation
 		UpDirection = GlobalBasis.Y.Normalized();
 		base._PhysicsProcess(delta);
@@ -39,7 +40,7 @@ public partial class Player : CharacterBody3D
 		Vector3 prev_horizontal_velocity = ProjectOntoPlane(velocity, UpDirection);
 		velocity -= prev_horizontal_velocity;
 		// Add new horizontal velocity
-		velocity += movement * speed * Scale.X; // Scale.X is used to adjust speed based on the player's scale
+		velocity += movement * speed * Math.Abs(Scale.X); // Scale.X is used to adjust speed based on the player's scale
 		if (IsOnFloor())
 		{
 			if (Input.IsActionJustPressed("jump"))

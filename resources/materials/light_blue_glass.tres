@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://uxyko85aevcm"]
+
+[ext_resource type="Texture2D" uid="uid://bdsdgsqwskg3v" path="res://resources/kenneys_textures/Light/texture_04.png" id="1_nfj5u"]
+
+[resource]
+transparency = 1
+albedo_color = Color(0.458824, 0.752941, 0.729412, 0.882353)
+albedo_texture = ExtResource("1_nfj5u")
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_world_triplanar = true

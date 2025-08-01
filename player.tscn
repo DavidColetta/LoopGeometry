@@ -11,7 +11,7 @@ script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_pq8q7")
-debug_color = Color(0, 0.6, 0.69803923, 1)
+debug_color = Color(0, 0.6, 0.698039, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474353, 0)
