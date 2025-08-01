@@ -16,6 +16,7 @@ public partial class Portal : Area3D
 				portal_visual = GetNode<CsgBox3D>("PortalVisual");
 				portal_collision_shape = GetNode<CollisionShape3D>("CollisionShape3D");
 				shape_cast = GetNode<ShapeCast3D>("ShapeCast3D");
+				visible_on_screen_notifier = GetNode<VisibleOnScreenNotifier3D>("VisibleOnScreenNotifier3D");
 				UpdatePortalAreaSize();
 			}
 		}
@@ -40,6 +41,11 @@ public partial class Portal : Area3D
 		{
 			return;
 		}
+		if (target == null)
+		{
+			GD.PrintErr("Portal " + GetPath() + " target is not set, please set the target portal in the inspector.");
+			return;
+		}
 		portal_visual = GetNode<CsgBox3D>("PortalVisual");
 		portal_collision_shape = GetNode<CollisionShape3D>("CollisionShape3D");
 		portal_viewport = GetNode<SubViewport>("CameraViewport");
@@ -62,9 +68,7 @@ public partial class Portal : Area3D
 		UpdatePortalAreaSize();
 		SetPortalCameraEnvironmentToWorld3DEnvironmentNoTonemap();
 
-		
-
-		RenderingServer.FramePreDraw += DoUpdates;
+		RenderingServer.FramePreDraw += DoUpdatesIfVisible;
 	}
 	private void ScreenEntered()
 	{
@@ -112,6 +116,11 @@ public partial class Portal : Area3D
 		GD.Print("Moving player to other portal");
 		Transform3D transform_rel_this_portal = GlobalTransform.AffineInverse() * player.GlobalTransform;
 		Transform3D moved_to_other_portal = target.GlobalTransform * transform_rel_this_portal;
+
+		Basis basis_rel_this_portal = GlobalTransform.Basis.Orthonormalized().Inverse();
+		Basis basis_to_other_portal = target.GlobalTransform.Basis.Orthonormalized();
+		player.Velocity = basis_to_other_portal * (basis_rel_this_portal * player.Velocity);
+
 		player.GlobalTransform = moved_to_other_portal;
 
 		World3D world = GetViewport().World3D;//Update the sky rotation of the world environment to match the target portal's rotation
@@ -133,11 +142,17 @@ public partial class Portal : Area3D
 	private void UpdatePortalAreaSize()
 	{
 		portal_visual.Size = new Vector3(portal_size.X, portal_size.Y, portal_visual.Size.Z);
-		((BoxShape3D)portal_collision_shape.Shape).Size = new Vector3(portal_visual.Size.X + portal_margins.X * 2f, portal_visual.Size.Y + portal_margins.Y * 2f, portal_margins.Z * 2f);
+		Vector3 portal_collision_shape_size = new Vector3(portal_visual.Size.X + portal_margins.X * 2f, portal_visual.Size.Y + portal_margins.Y * 2f, portal_margins.Z * 2f);
+		((BoxShape3D)portal_collision_shape.Shape).Size = portal_collision_shape_size;
 		shape_cast.Shape = new BoxShape3D()
 		{
-			Size = new Vector3(portal_visual.Size.X + portal_margins.X * 2f, portal_visual.Size.Y + portal_margins.Y * 2f, portal_margins.Z * 2f)
+			Size = portal_collision_shape_size
 		};
+
+		visible_on_screen_notifier.Aabb = new Aabb(
+			new Vector3(-portal_size.X, -portal_size.Y, -(portal_visual.Size.Z+1)),
+			new Vector3(portal_size.X*2f, portal_size.Y*2f, (portal_visual.Size.Z+1)*2f)
+		);
 	}
 
 	public override void _Process(double delta)
@@ -147,9 +162,9 @@ public partial class Portal : Area3D
 		if (Engine.IsEditorHint())
 		{
 			return;
-		}	
+		}
 
-		DoUpdates();
+		DoUpdatesIfVisible();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -161,20 +176,22 @@ public partial class Portal : Area3D
 			return;
 		}
 
+		DoUpdatesIfVisible();
+	}
+
+	public void DoUpdatesIfVisible()
+	{
+		if (!Visible) return;
 		DoUpdates();
 	}
 
 	public void DoUpdates()
 	{
-		if (!Visible) return;
 		foreach (Node3D body in GetBodiesWhichPassedThroughThisFrame())
 		{
 			MoveToOtherPortal(body);
 		}
-		if (portal_visual.Visible)
-		{
-			UpdateCameraToOtherPortal();
-		}
+		UpdateCameraToOtherPortal();
 		ThickenPortalIfNecessary();
 	}
 
@@ -286,7 +303,7 @@ public partial class Portal : Area3D
 			return;
 		}
 
-		var thickness = 2f;
+		var thickness = 0.5f;
 		portal_visual.Size = new Vector3(portal_size.X, portal_size.Y, thickness);
 		if (portal_side == 1)
 		{

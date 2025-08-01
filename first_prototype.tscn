@@ -121,21 +121,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47959, -0.0505867, -0.0506
 size = Vector3(0.0939453, 2.40391, 1.70137)
 
 [node name="Tunnel2" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp"]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 1.19422e-07, -0.866026, -0.500011, 3.19989e-08, 0.500001, -0.866043, -3.85, 10.7533, 0.253064)
-size = Vector3(6, 2.5, 2)
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 1.19422e-07, -0.866026, -0.500011, 3.19989e-08, 0.500001, -0.866043, -3.85, 11.0033, 0.686087)
+size = Vector3(6, 2.5, 3)
 
 [node name="TunnelInterior" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel2"]
-transform = Transform3D(1, 2.60535e-15, 7.03437e-13, -1.18413e-15, 1, -2.98012e-08, 0, 0, 0.999993, 0.2, 0.05, -0.067)
+transform = Transform3D(1, 2.84245e-15, 7.03437e-13, -2.36305e-16, 1, -2.98012e-08, 0, 0, 0.999993, 0.2, 0.0499973, 0.433001)
 operation = 2
 size = Vector3(6, 2.1, 1.6)
 
 [node name="TunnelDoorframe2" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel2"]
-transform = Transform3D(-1, -8.74228e-08, 2.9803e-08, 8.74228e-08, -1, 8.94079e-08, 1.42109e-14, -8.88178e-15, 0.999993, -1.65, 0.00276279, 0.241564)
+transform = Transform3D(-1, -8.74228e-08, 2.9803e-08, 8.74228e-08, -1, 8.94079e-08, 2.13163e-14, -2.84217e-14, 0.999993, -1.65, 0.00275898, 0.741562)
 operation = 2
 size = Vector3(2, 2, 2.04746)
 
 [node name="Portal" parent="Floor/LibraryInterior/Ramp/Tunnel2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37108e-08, 2.60535e-15, -1, -2.98012e-08, 1, 7.69758e-15, 0.999993, 0, -4.37111e-08, 2, 0.05, -0.067)
+transform = Transform3D(-4.37108e-08, 2.84245e-15, -1, -2.98012e-08, 1, 1.07766e-14, 0.999993, 0, -4.37111e-08, 2, 0.0499973, 0.433001)
 target = NodePath("../../../../Lounge/Portal")
 portal_size = Vector2(1.6, 2.1)
 
@@ -185,6 +185,7 @@ portal_size = Vector2(1.6, 3.2)
 [node name="TheLibraryOutside" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.25, -27)
 material_override = ExtResource("4_c1877")
+use_collision = true
 size = Vector3(12, 12.5, 12)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="TheLibraryOutside"]
