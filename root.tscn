@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://buh4ebrho3c81"]
+[gd_scene load_steps=9 format=3 uid="uid://buh4ebrho3c81"]
 
-[ext_resource type="PackedScene" uid="uid://1ba0m41x6mop" path="res://portal/portal.tscn" id="3_28aoi"]
 [ext_resource type="PackedScene" uid="uid://t5t3sd6y1nio" path="res://first_prototype.tscn" id="3_vvh5c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vho56"]
@@ -31,16 +30,6 @@ fog_depth_begin = 50.0
 fog_depth_end = 70.0
 
 [node name="Root" type="Node3D"]
-
-[node name="Portal3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_28aoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2)
-visible = false
-target = NodePath("../Portal4")
-
-[node name="Portal4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_28aoi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 1, 2)
-visible = false
-target = NodePath("../Portal3")
 
 [node name="Cube" type="StaticBody3D" parent="."]
 process_mode = 4
