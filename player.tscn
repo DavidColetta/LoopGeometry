@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://wi16vavper7p"]
+[gd_scene load_steps=5 format=3 uid="uid://wi16vavper7p"]
 
 [ext_resource type="Script" uid="uid://dpvd3ofa66q6i" path="res://Player.cs" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://b6f1i0hr1qh3h" path="res://AchievementsUi.cs" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pq8q7"]
 radius = 0.35
 height = 1.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_onrkg"]
+font_size = 30
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
@@ -16,3 +24,38 @@ debug_color = Color(0, 0.6, 0.698039, 1)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474353, 0)
 near = 0.001
+
+[node name="AchievementsUI" type="CanvasLayer" parent="."]
+script = ExtResource("2_onrkg")
+
+[node name="Control" type="Control" parent="AchievementsUI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -398.0
+offset_top = 47.0
+offset_right = 402.0
+offset_bottom = 211.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AchievementsUI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -574.0
+offset_top = 33.0
+offset_right = 571.0
+offset_bottom = 133.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TemplateLabel" type="Label" parent="AchievementsUI/Control/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Obtained"
+label_settings = SubResource("LabelSettings_onrkg")
+horizontal_alignment = 1
+vertical_alignment = 1

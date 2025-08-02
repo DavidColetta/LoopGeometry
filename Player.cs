@@ -10,6 +10,20 @@ public partial class Player : CharacterBody3D
 
 	float gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
 
+	public AchievementsUi achievementsUi;
+	public override void _Ready()
+	{
+		base._Ready();
+
+		// Inventory.LoadItemsFromFile();
+		achievementsUi = GetNode<AchievementsUi>("AchievementsUI");
+	}
+
+	public override void _ExitTree()
+	{
+		base._ExitTree();
+		Inventory.SaveItemsToFile();
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{

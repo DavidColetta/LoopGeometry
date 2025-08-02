@@ -25,9 +25,12 @@ sky = SubResource("Sky_28aoi")
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.7
 ambient_light_energy = 3.0
-fog_sky_affect = 0.88
-fog_depth_begin = 50.0
-fog_depth_end = 70.0
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.752941, 0.862745, 0.886275, 1)
+fog_depth_curve = 1.5
+fog_depth_begin = 25.0
+fog_depth_end = 50.0
 
 [node name="Root" type="Node3D"]
 
