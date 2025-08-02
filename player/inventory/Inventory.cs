@@ -8,6 +8,7 @@ public partial class Inventory : Resource
 	public static List<Item> items = new List<Item>();
 	public static string inventoryFilePath = "inventory.txt";
 
+	public static event Action InventoryUpdated;
 	public static void AddItem(Item item)
 	{
 		if (items == null)
@@ -16,7 +17,7 @@ public partial class Inventory : Resource
 		}
 
 		items.Add(item);
-		GD.Print("Item added: " + item.itemName);
+		InventoryUpdated?.Invoke();
 	}
 
 	public static bool HasItem(string itemName)
@@ -48,17 +49,17 @@ public partial class Inventory : Resource
 
 			for (int i = 0; i < lines.Length; i++)
 			{
-				string itemName = lines[i].Trim().Replace(" ", "");
-				if (!string.IsNullOrEmpty(itemName))
+				string itemPath = lines[i];
+				if (!string.IsNullOrEmpty(itemPath))
 				{
-					Item item = GD.Load<Item>("res://resources/items/" + itemName + ".tres");
+					Item item = GD.Load<Item>(itemPath);
 					if (item != null)
 					{
 						items.Add(item);
 					}
 					else
 					{
-						GD.PrintErr("Item not found: " + itemName);
+						GD.PrintErr("Item not found: " + itemPath);
 					}
 				}
 			}
@@ -67,6 +68,7 @@ public partial class Inventory : Resource
 		{
 			GD.PrintErr("Error loading items: " + e.Message);
 		}
+		InventoryUpdated?.Invoke();
 	}
 
 	public static void SaveItemsToFile()
@@ -81,7 +83,7 @@ public partial class Inventory : Resource
 				{
 					if (item != null)
 					{
-						writer.WriteLine(item.itemName);
+						writer.WriteLine(item.ResourcePath);
 					}
 				}
 			}

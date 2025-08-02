@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dbtcxgowopqxu"]
+
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="1_4bcok"]
+[ext_resource type="Texture2D" uid="uid://da82tmettt1d6" path="res://resources/item_sprites/The_Fish_That_Traveled_Through_Time_Large.png" id="1_ldptm"]
+
+[resource]
+script = ExtResource("1_4bcok")
+itemName = "The Fish That Travelled Through Time"
+itemDescription = ""
+itemTexture = ExtResource("1_ldptm")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"

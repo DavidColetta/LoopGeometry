@@ -7,6 +7,8 @@ public partial class Player : CharacterBody3D
 	[Export] float speed = 5.0f;
 	[Export] float jump_speed = 10.0f;
 	[Export] float look_sensitivity = 0.1f;
+	[Export] float terminal_velocity = 25.0f; // Maximum speed the player can reach
+	[Export] Vector2 max_distance_from_world_center = new Vector2(70f, 70f);
 
 	float gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
 
@@ -44,7 +46,9 @@ public partial class Player : CharacterBody3D
 		// Project onto player's movement plane (perpendicular to player's up)
 		camera_forward = camera_forward - Transform.Basis.Y * camera_forward.Dot(Transform.Basis.Y);
 		camera_right = camera_right - Transform.Basis.Y * camera_right.Dot(Transform.Basis.Y);
+		camera_forward -= UpDirection * camera_forward.Dot(UpDirection);
 		camera_forward = camera_forward.Normalized();
+		camera_right -= UpDirection * camera_right.Dot(UpDirection);
 		camera_right = camera_right.Normalized();
 		// Calculate movement in world space but constrained to player's local plane
 		Vector3 movement = camera_right * input_vector.X + camera_forward * input_vector.Y;
@@ -57,14 +61,28 @@ public partial class Player : CharacterBody3D
 		velocity += movement * speed * Math.Abs(Scale.X); // Scale.X is used to adjust speed based on the player's scale
 		if (IsOnFloor())
 		{
-			if (Input.IsActionJustPressed("jump"))
-			{
-				velocity += UpDirection * jump_speed;
-			}
+			// if (Input.IsActionJustPressed("jump"))
+			// {
+			// 	velocity += UpDirection * jump_speed;
+			// }
 		}
 		else
 		{
+			if (velocity.Length() > terminal_velocity)
+			{
+				// Limit the velocity to terminal velocity
+				velocity = velocity.Normalized() * terminal_velocity * Mathf.Abs(Scale.X);
+			}
 			velocity -= UpDirection * gravity * (float)delta; // Apply gravity
+		}
+
+		// Ensure the player does not move too far from the world center
+		if (Mathf.Abs(GlobalPosition.X) > max_distance_from_world_center.X || Mathf.Abs(GlobalPosition.Z) > max_distance_from_world_center.Y)
+		{
+			Vector3 clamped_position = GlobalPosition;
+			clamped_position.X = Mathf.Clamp(clamped_position.X, -max_distance_from_world_center.X, max_distance_from_world_center.X);
+			clamped_position.Z = Mathf.Clamp(clamped_position.Z, -max_distance_from_world_center.Y, max_distance_from_world_center.Y);
+			GlobalPosition = clamped_position;
 		}
 
 		Velocity = velocity;

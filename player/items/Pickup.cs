@@ -9,17 +9,23 @@ public partial class Pickup : Sprite3D
 	{
 		base._Ready();
 
-		if (Inventory.HasItem(item.itemName))
-		{
-			Visible = false; // Hide the pickup item if already collected
-			return;
-		}
+		Inventory.InventoryUpdated += Setup;
+		Setup();
 
 		area = GetNode<Area3D>("Area3D");
 
 		Texture = item.itemTexture;
 
 		area.BodyEntered += OnBodyEntered;
+	}
+
+	public void Setup()
+	{
+		if (Inventory.HasItem(item.itemName))
+		{
+			Visible = false; // Hide the pickup item if already collected
+			return;
+		}
 	}
 
 	private void OnBodyEntered(Node3D body)

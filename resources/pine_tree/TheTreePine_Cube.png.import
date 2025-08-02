@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dujp4k15wwfce"
-path.s3tc="res://.godot/imported/TheTreePine2_Material Base Color.png-0d60a0a39cd9421dffa4790c6276a7a2.s3tc.ctex"
+uid="uid://kvcy2jwrkiob"
+path.s3tc="res://.godot/imported/TheTreePine_Cube.png-13d1fd4dde8768a0564f4f89644fd239.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e8ddb1ac8d2c0b740be67d3ea41d57cf"
+"md5": "49da78f607628af4cc3337aef5ed6561"
 }
 
 [deps]
 
-source_file="res://resources/TheTreePine2_Material Base Color.png"
-dest_files=["res://.godot/imported/TheTreePine2_Material Base Color.png-0d60a0a39cd9421dffa4790c6276a7a2.s3tc.ctex"]
+source_file="res://resources/pine_tree/TheTreePine_Cube.png"
+dest_files=["res://.godot/imported/TheTreePine_Cube.png-13d1fd4dde8768a0564f4f89644fd239.s3tc.ctex"]
 
 [params]
 

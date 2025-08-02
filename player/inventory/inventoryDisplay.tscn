@@ -11,12 +11,16 @@ mouse_filter = 2
 
 [node name="ItemList" type="ItemList" parent="."]
 visible = false
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 371.0
+offset_left = 250.0
 offset_top = 97.0
-offset_right = 716.0
+offset_right = 850.0
 offset_bottom = 523.0
 mouse_filter = 2
 theme_override_font_sizes/font_size = 30
-max_text_lines = 2
+allow_search = false
+max_text_lines = 3
+auto_width = true
+auto_height = true
 icon_scale = 0.15

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2n84nqyvgn16"
-path="res://.godot/imported/TheTreePine.glb-0360c2942d91e0833c6b6e5d52757a30.scn"
+uid="uid://43cofv207ihd"
+path="res://.godot/imported/Bookshelf.glb-cdc7bbdff7a83563d0d701256846dfaa.scn"
 
 [deps]
 
-source_file="res://resources/TheTreePine.glb"
-dest_files=["res://.godot/imported/TheTreePine.glb-0360c2942d91e0833c6b6e5d52757a30.scn"]
+source_file="res://resources/bookshelves/Bookshelf.glb"
+dest_files=["res://.godot/imported/Bookshelf.glb-cdc7bbdff7a83563d0d701256846dfaa.scn"]
 
 [params]
 

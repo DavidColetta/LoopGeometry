@@ -9,6 +9,8 @@ public partial class InventoryDisplay : Control
 	public override void _Ready()
 	{
 		ItemList = GetNode<ItemList>("ItemList");
+
+		Inventory.InventoryUpdated += Display;
 	}
 
 	public override void _UnhandledInput(InputEvent @event)

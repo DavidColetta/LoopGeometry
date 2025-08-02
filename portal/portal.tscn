@@ -43,5 +43,6 @@ visible = false
 aabb = AABB(-1, -1, -1.01, 2, 2, 2.02)
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+enabled = false
 shape = SubResource("BoxShape3D_508n2")
 target_position = Vector3(0, 0, 0)

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1kjklyxwmco7"
-path.s3tc="res://.godot/imported/TheTreePine-col_Cube.png-38494719f2eeaefe1997173cb0005604.s3tc.ctex"
+uid="uid://dx1yqipmyg3yn"
+path.s3tc="res://.godot/imported/Bookshelf_Material Base Color.png-c20305dfd1fa1318cfa8366a336a1de4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "49da78f607628af4cc3337aef5ed6561"
+"md5": "1874d9286daa7d7f6bc8d2880cdda9a5"
 }
 
 [deps]
 
-source_file="res://resources/TheTreePine-col_Cube.png"
-dest_files=["res://.godot/imported/TheTreePine-col_Cube.png-38494719f2eeaefe1997173cb0005604.s3tc.ctex"]
+source_file="res://resources/bookshelves/Bookshelf_Material Base Color.png"
+dest_files=["res://.godot/imported/Bookshelf_Material Base Color.png-c20305dfd1fa1318cfa8366a336a1de4.s3tc.ctex"]
 
 [params]
 

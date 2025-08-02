@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://t5t3sd6y1nio"]
+[gd_scene load_steps=25 format=3 uid="uid://t5t3sd6y1nio"]
 
 [ext_resource type="PackedScene" uid="uid://wi16vavper7p" path="res://player/player.tscn" id="2_3c27s"]
 [ext_resource type="Material" uid="uid://cq0i8ja7em3hk" path="res://resources/materials/green_tiles.tres" id="2_pgi0r"]
@@ -6,11 +6,26 @@
 [ext_resource type="Material" uid="uid://dfvarehto6xeg" path="res://resources/materials/orange_tiles.tres" id="3_af5ga"]
 [ext_resource type="Material" uid="uid://by5jpoada1oxk" path="res://resources/materials/dark_grey_tiles.tres" id="4_c1877"]
 [ext_resource type="Material" uid="uid://uxyko85aevcm" path="res://resources/materials/light_blue_glass.tres" id="4_igjg5"]
+[ext_resource type="Texture2D" uid="uid://da82tmettt1d6" path="res://resources/item_sprites/The_Fish_That_Traveled_Through_Time_Large.png" id="5_d1w0b"]
 [ext_resource type="PackedScene" uid="uid://1ba0m41x6mop" path="res://portal/portal.tscn" id="5_xgr5p"]
+[ext_resource type="Resource" uid="uid://dbtcxgowopqxu" path="res://resources/items/TheFishThatTraveledThroughTime.tres" id="6_fw3u2"]
 [ext_resource type="PackedScene" uid="uid://g0sdtjk7yja4" path="res://player/items/pickup.tscn" id="7_nrkjx"]
 [ext_resource type="Script" uid="uid://jugro0awm6rn" path="res://LoopTracker.cs" id="7_pgi0r"]
 [ext_resource type="Resource" uid="uid://d1n8iqg3ey27b" path="res://resources/items/TravelerPlant.tres" id="8_t4n5b"]
-[ext_resource type="PackedScene" uid="uid://b2n84nqyvgn16" path="res://resources/TheTreePine.glb" id="11_56cti"]
+[ext_resource type="Texture2D" uid="uid://wxlfvcpp1cc3" path="res://resources/item_sprites/PipeMachine.png" id="9_7yoy4"]
+[ext_resource type="Resource" uid="uid://b37xak0apdj2n" path="res://resources/items/PipeMachine.tres" id="10_jm0pe"]
+[ext_resource type="PackedScene" uid="uid://b2n84nqyvgn16" path="res://resources/pine_tree/TheTreePine.glb" id="11_56cti"]
+[ext_resource type="Material" uid="uid://obwptesybjff" path="res://resources/materials/purple.tres" id="12_nl05l"]
+[ext_resource type="PackedScene" uid="uid://43cofv207ihd" path="res://resources/bookshelves/Bookshelf.glb" id="14_hlkmk"]
+[ext_resource type="Script" uid="uid://561ddacqh8fg" path="res://ToggleShellVisible.cs" id="15_nw2kp"]
+[ext_resource type="Resource" uid="uid://gk467mcj06m7" path="res://resources/items/StrangemansShell.tres" id="16_okcvt"]
+[ext_resource type="Script" uid="uid://dvit0hit4nsi4" path="res://AreaTrigger.cs" id="17_fw3u2"]
+[ext_resource type="Texture2D" uid="uid://clgiobx5d60t7" path="res://resources/item_sprites/StrangemansShell.png" id="18_bw4uo"]
+[ext_resource type="Texture2D" uid="uid://cxbxkqdw83ptb" path="res://resources/item_sprites/TheObjectFromEarth.png" id="21_l465l"]
+[ext_resource type="Resource" uid="uid://ct8ty8ih3rmt0" path="res://resources/items/TheObjectFromEarth.tres" id="22_nl05l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1w0b"]
+size = Vector3(11, 5.62637, 9)
 
 [node name="FirstPrototype" type="Node3D"]
 
@@ -21,33 +36,60 @@ size = Vector3(50, 50, 50)
 material = ExtResource("2_pgi0r")
 
 [node name="Lounge" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 5.988, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 6.13296, 12)
 operation = 2
-size = Vector3(9.7, 5, 8)
+size = Vector3(9.7, 5.28992, 8)
 material = ExtResource("2_ug2dy")
 
-[node name="Portal" parent="Floor/Lounge" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.37777, -1.438, 0)
-target = NodePath("../../LibraryInterior/Ramp/Tunnel2/Portal")
-portal_size = Vector2(1.6, 2.1)
-
 [node name="Label3D" type="Label3D" parent="Floor/Lounge"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.83424, -1, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.83424, -1.14496, 0)
+alpha_cut = 1
 text = "If you see
 a bean can,
 turn around"
 
 [node name="FishTank" type="CSGBox3D" parent="Floor/Lounge"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.980956, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12591, 0)
 operation = 2
 size = Vector3(5, 3, 5)
 material = ExtResource("4_igjg5")
+
+[node name="FishTank2" type="CSGBox3D" parent="Floor/Lounge/FishTank"]
+operation = 2
+size = Vector3(4.5, 3, 4.5)
+material = ExtResource("4_igjg5")
+
+[node name="Pickup" parent="Floor/Lounge/FishTank/FishTank2" instance=ExtResource("7_nrkjx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.1, 0)
+alpha_cut = 1
+texture = ExtResource("5_d1w0b")
+item = ExtResource("6_fw3u2")
+
+[node name="Ramp" type="CSGBox3D" parent="Floor/Lounge/FishTank/FishTank2"]
+transform = Transform3D(0.775507, -0.631339, 0, 0.631339, 0.775507, 0, 0, 0, 1, 0.757411, -0.291948, 1.9)
+operation = 2
+size = Vector3(7, 1, 0.8)
+material = ExtResource("2_ug2dy")
 
 [node name="LoungeEntrance" type="CSGBox3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 4.55, 12)
 operation = 2
 size = Vector3(5, 2.1, 1.6)
-material = ExtResource("4_c1877")
+
+[node name="Portal" parent="Floor/LoungeEntrance" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.67777, 0, 0)
+target = NodePath("../../LibraryInterior/Ramp/Tunnel2/Portal")
+portal_size = Vector2(1.6, 2.1)
+
+[node name="LoungeEntrance2" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8, 4.55, 6)
+operation = 2
+size = Vector3(5, 2.1, 1.6)
+
+[node name="Portal" parent="Floor/LoungeEntrance2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.67777, 0, 0)
+target = NodePath("../../LibraryInterior/LoungeExit/LoungeExit2/Portal")
+portal_size = Vector2(1.6, 2.1)
 
 [node name="FishTankEntrance" type="CSGBox3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 9.38592, 12)
@@ -92,13 +134,13 @@ transform = Transform3D(1, 0, 0, 0, 0.866026, 0.500001, 0, -0.500001, 0.866026, 
 size = Vector3(10.1, 2.5, 2)
 
 [node name="TunnelInterior" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0449724, -0.0669994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0854983, -0.0449734, -0.0669994)
 operation = 2
-size = Vector3(9.7, 2.1, 1.6)
+size = Vector3(9.871, 2.1, 1.6)
 
 [node name="Ramp2" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel"]
-transform = Transform3D(-1, -6.08091e-08, 6.9521e-08, 8.74228e-08, -0.866025, 0.5, 1.3027e-15, 0.5, 0.866025, -1.8, 3.97858, 5.40416)
-size = Vector3(1, 1, 12)
+transform = Transform3D(-1, -6.08091e-08, 6.9521e-08, 8.74228e-08, -0.866025, 0.5, 1.3026e-15, 0.5, 0.866025, -1.8, 3.87858, 5.23096)
+size = Vector3(1, 1, 12.4)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel/Ramp2"]
 transform = Transform3D(1, 6.03961e-14, -2.14584e-12, -1.11113e-12, 0.5, -0.866026, 3.58124e-13, 0.866027, 0.5, 0, -0.883, 5.214)
@@ -111,12 +153,12 @@ operation = 2
 size = Vector3(2, 2, 2.04746)
 
 [node name="Portal" parent="Floor/LibraryInterior/Ramp/Tunnel" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.0450001, -0.0669994)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.3, -0.0450001, -0.0669994)
 target = NodePath("../Portal2")
 portal_size = Vector2(1.6, 2.1)
 
 [node name="Portal2" parent="Floor/LibraryInterior/Ramp/Tunnel" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(4.37114e-08, 3.82137e-15, -1, 8.74228e-08, -1, 0, -1, -8.74228e-08, -4.37114e-08, -4.41276, -0.0450001, -0.0669994)
+transform = Transform3D(4.37114e-08, 3.82137e-15, -1, 8.74228e-08, -1, 0, -1, -8.74228e-08, -4.37114e-08, -4.21276, -0.0450001, -0.0669994)
 target = NodePath("../Portal")
 portal_size = Vector2(1.6, 2.1)
 
@@ -125,22 +167,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47959, -0.0505867, -0.0506
 size = Vector3(0.0939453, 2.40391, 1.70137)
 
 [node name="Tunnel2" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp"]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 1.19422e-07, -0.866026, -0.500011, 3.19989e-08, 0.500001, -0.866043, -3.85, 11.0033, 0.686087)
-size = Vector3(6, 2.5, 3)
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 1.19422e-07, -0.866026, -0.500011, 3.19989e-08, 0.500001, -0.866043, -4.85, 11.0033, 0.68609)
+size = Vector3(8, 2.5, 3)
 
 [node name="TunnelInterior" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel2"]
-transform = Transform3D(1, 2.84245e-15, 7.03437e-13, -2.36305e-16, 1, -2.98012e-08, 0, 0, 0.999993, 0.2, 0.0499973, 0.433001)
+transform = Transform3D(1, 2.84245e-15, 1.49214e-13, -2.36305e-16, 1, -2.98012e-08, 0, 0, 0.999993, 0.0500007, 0.0499964, 0.433001)
 operation = 2
-size = Vector3(6, 2.1, 1.6)
+size = Vector3(7.7, 2.1, 1.6)
 
 [node name="TunnelDoorframe2" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp/Tunnel2"]
-transform = Transform3D(-1, -8.74228e-08, 2.9803e-08, 8.74228e-08, -1, 8.94079e-08, 2.13163e-14, -2.84217e-14, 0.999993, -1.65, 0.00275898, 0.741562)
+transform = Transform3D(-1, -8.74228e-08, 2.9803e-08, 8.74228e-08, -1, 8.94079e-08, 2.84217e-14, -2.84217e-14, 0.999993, -0.65, 0.00275803, 0.741562)
 operation = 2
 size = Vector3(2, 2, 2.04746)
 
 [node name="Portal" parent="Floor/LibraryInterior/Ramp/Tunnel2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37108e-08, 2.84245e-15, -1, -2.98012e-08, 1, 1.07766e-14, 0.999993, 0, -4.37111e-08, 2, 0.0499973, 0.433001)
-target = NodePath("../../../../Lounge/Portal")
+transform = Transform3D(-4.37108e-08, 2.84245e-15, -1, -2.98012e-08, 1, 1.7882e-14, 0.999993, 0, -4.37111e-08, 3, 0.0499964, 0.433001)
+target = NodePath("../../../../LoungeEntrance/Portal")
 portal_size = Vector2(1.6, 2.1)
 
 [node name="TunnelDoorframe" type="CSGBox3D" parent="Floor/LibraryInterior/Ramp"]
@@ -162,6 +204,93 @@ material = ExtResource("3_af5ga")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 target = NodePath("../../../FishTankEntrance2/Portal")
 portal_size = Vector2(1, 2)
+
+[node name="LoungeExit" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.95, 3.9, 5.57554)
+operation = 2
+size = Vector3(2, 2.7, 2.84893)
+
+[node name="LoungeExit2" type="CSGBox3D" parent="Floor/LibraryInterior/LoungeExit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.490515)
+operation = 2
+size = Vector3(1.6, 2.1, 3.81897)
+
+[node name="Portal" parent="Floor/LibraryInterior/LoungeExit/LoungeExit2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.30634)
+target = NodePath("../../../../LoungeEntrance2/Portal")
+portal_size = Vector2(1.6, 2.1)
+
+[node name="Ramp3" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(0.5, 0.866025, 3.55271e-15, 3.78552e-08, -2.18557e-08, -1, -0.866025, 0.5, -4.37114e-08, -6, 4, -3.26603)
+operation = 2
+size = Vector3(11, 1, 1)
+
+[node name="Ramp4" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(0.5, 0.866025, 5.32907e-15, -0.866025, 0.5, 0, 0, -5.32907e-15, 1, 7.25, -1.18, 6.504)
+operation = 2
+size = Vector3(10.7, 1, 1)
+
+[node name="Ramp5" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 4.65, 4, 0.1)
+operation = 2
+size = Vector3(15.6, 1, 1.6)
+
+[node name="Doorway3" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.85, 4, -8.29712)
+size = Vector3(3, 3, 1.6)
+
+[node name="Doorway" type="CSGBox3D" parent="Floor/LibraryInterior/Doorway3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 2)
+size = Vector3(3, 1.6, 4)
+
+[node name="Portal" parent="Floor/LibraryInterior/Doorway3/Doorway" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+target = NodePath("../../../Doorway4/Doorway/Portal")
+portal_size = Vector2(3, 1.6)
+
+[node name="Doorway4" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 2.65, 4, 8.10288)
+size = Vector3(3, 3, 1.6)
+
+[node name="Doorway" type="CSGBox3D" parent="Floor/LibraryInterior/Doorway4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 2)
+size = Vector3(3, 1.6, 4)
+
+[node name="Portal" parent="Floor/LibraryInterior/Doorway4/Doorway" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0.2)
+target = NodePath("../../../Doorway3/Doorway/Portal")
+portal_size = Vector2(3, 1.6)
+
+[node name="Doorway5" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 2.65, 4, -11.0471)
+size = Vector3(3, 8.1, 1.6)
+
+[node name="Portal" parent="Floor/LibraryInterior/Doorway5" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, -8.74228e-08, 8.74228e-08, 8.74228e-08, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, -2.38419e-07, -3.3, 0)
+target = NodePath("../../Doorway6/Doorway7/Portal")
+portal_size = Vector2(3, 1.6)
+
+[node name="Doorway6" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -4.8, 4.48, 8.45)
+size = Vector3(3, 3, 1.6)
+
+[node name="Doorway" type="CSGBox3D" parent="Floor/LibraryInterior/Doorway6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699999, 2)
+size = Vector3(3, 1.6, 4)
+
+[node name="Doorway7" type="CSGBox3D" parent="Floor/LibraryInterior/Doorway6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 3.2)
+size = Vector3(3, 3, 1.6)
+
+[node name="Portal" parent="Floor/LibraryInterior/Doorway6/Doorway7" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0)
+target = NodePath("../../../Doorway5/Portal")
+portal_size = Vector2(3, 1.6)
+
+[node name="Pickup" parent="Floor/LibraryInterior" instance=ExtResource("7_nrkjx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.6, -1.6, -5.8)
+texture = ExtResource("9_7yoy4")
+item = ExtResource("10_jm0pe")
 
 [node name="Loop2" type="CSGCombiner3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1, 16)
@@ -220,7 +349,7 @@ portal_size = Vector2(1.6, 3.2)
 
 [node name="Portal2" parent="Floor/Loop3/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 2.2)
-target = NodePath("../../../EndOfLoopRoom/Entrance/Portal")
+target = NodePath("../../../EndOfLoopRoom/Entrance2/Portal")
 portal_size = Vector2(1.6, 3.2)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Floor/Loop3/CSGBox3D"]
@@ -231,24 +360,48 @@ height = 0.1
 material = ExtResource("2_pgi0r")
 
 [node name="EndOfLoopRoom" type="CSGBox3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 14.25, 15.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 13, 15.5)
 operation = 2
-size = Vector3(5.5, 3.5, 13)
-material = ExtResource("4_c1877")
+size = Vector3(5.5, 5, 13)
+material = ExtResource("12_nl05l")
 
 [node name="Entrance" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.15, 0.25)
-size = Vector3(1.6, 3.2, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.632, -0.9, 0.25)
+size = Vector3(3.76855, 3.2, 1.5)
 material = ExtResource("4_c1877")
-
-[node name="Portal" parent="Floor/EndOfLoopRoom/Entrance" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.25, 0, -0.05)
-target = NodePath("../../../Loop3/CSGBox3D/Portal2")
-portal_size = Vector2(1.6, 3.2)
 
 [node name="TravelerPlant" parent="Floor/EndOfLoopRoom" instance=ExtResource("7_nrkjx")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.2, 0.25)
 item = ExtResource("8_t4n5b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.75, -1, 4)
+size = Vector3(2.5, 3, 2)
+material = ExtResource("12_nl05l")
+
+[node name="Portal" parent="Floor/EndOfLoopRoom/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+target = NodePath("../../CSGBox3D2/Portal")
+portal_size = Vector2(2.5, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.75, -1.75, -3)
+size = Vector3(1.25, 1.5, 2)
+material = ExtResource("12_nl05l")
+
+[node name="Portal" parent="Floor/EndOfLoopRoom/CSGBox3D2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+target = NodePath("../../CSGBox3D/Portal")
+portal_size = Vector2(2.5, 3)
+
+[node name="Entrance2" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, -0.9, -1.5)
+size = Vector3(5, 3.2, 1.5)
+material = ExtResource("4_c1877")
+
+[node name="Portal" parent="Floor/EndOfLoopRoom/Entrance2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -0.05)
+target = NodePath("../../../Loop1/CSGBox3D2/CSGBox3D/1stLoopTarget")
+portal_size = Vector2(1.6, 3.2)
 
 [node name="Loop1" type="CSGCombiner3D" parent="Floor" node_paths=PackedStringArray("portal1", "point1", "point2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.6, 16)
@@ -308,8 +461,45 @@ size = Vector3(2, 3, 1)
 target = NodePath("../../../Floor/LibraryInterior/Doorway/Portal")
 portal_size = Vector2(2, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_3c27s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22529, -9.5)
+[node name="TheLibraryOutside2" type="CSGBox3D" parent="TheLibraryOutside" node_paths=PackedStringArray("shellNode", "shellMirrorNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.75)
+material_override = ExtResource("4_c1877")
+operation = 2
+use_collision = true
+size = Vector3(11.5, 12, 10)
+script = ExtResource("15_nw2kp")
+shellNode = NodePath("PickupFromMirror")
+shellMirrorNode = NodePath("PickupMirrorView")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="TheLibraryOutside/TheLibraryOutside2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.54, -4.85)
+size = Vector3(2, 3, 1)
+
+[node name="Portal" parent="TheLibraryOutside/TheLibraryOutside2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.25)
+target = NodePath("../Mirror")
+portal_size = Vector2(11.5, 12)
+
+[node name="Mirror" type="Node3D" parent="TheLibraryOutside/TheLibraryOutside2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.74846e-07, -1.93715e-07, -1.25)
+
+[node name="PickupFromMirror" parent="TheLibraryOutside/TheLibraryOutside2" instance=ExtResource("7_nrkjx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5.65, -6.31)
+visible = false
+layers = 8
+texture = ExtResource("18_bw4uo")
+item = ExtResource("16_okcvt")
+
+[node name="PickupMirrorView" type="Sprite3D" parent="TheLibraryOutside/TheLibraryOutside2"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5.65, -6.31)
+layers = 512
+billboard = 1
+texture = ExtResource("18_bw4uo")
+
+[node name="Pickup" parent="TheLibraryOutside" instance=ExtResource("7_nrkjx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5, 6.75, 0)
+texture = ExtResource("21_l465l")
+item = ExtResource("22_nl05l")
 
 [node name="TravelerPlant" parent="." instance=ExtResource("7_nrkjx")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.8, -5.75)
@@ -321,4 +511,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -18)
 [node name="TheTreePine2" parent="." instance=ExtResource("11_56cti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -11)
 
+[node name="Bookshelf" parent="." instance=ExtResource("14_hlkmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -22.4, -32)
+
+[node name="Bookshelf2" parent="." instance=ExtResource("14_hlkmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -9.3, -20)
+
+[node name="Bookshelf3" parent="." instance=ExtResource("14_hlkmk")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -7, -14.1, -20)
+
+[node name="AquariumArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -19.4, -4.2)
+input_ray_pickable = false
+script = ExtResource("17_fw3u2")
+areaName = "The Aquarium"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AquariumArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463184, 0)
+shape = SubResource("BoxShape3D_d1w0b")
+
+[node name="Portal" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -75, 0)
+target = NodePath("../Portal2")
+portal_size = Vector2(150, 150)
+
+[node name="Portal2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 75, 0)
+target = NodePath("../Portal")
+portal_size = Vector2(150, 150)
+
+[node name="Player" parent="." instance=ExtResource("2_3c27s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -12, -3)
+
 [connection signal="PortalUsed" from="Floor/Loop1/CSGBox3D2/CSGBox3D/Portal" to="Floor/Loop1" method="IncrementLoopCount"]
+[connection signal="PortalUsed" from="TheLibraryOutside/TheLibraryOutside2/Portal" to="TheLibraryOutside/TheLibraryOutside2" method="ToggleVisibility"]

@@ -59,8 +59,11 @@ public partial class Portal : Area3D
 		if (!portal_camera.HasMethod("set_override_projection"))
 			GD.PrintErr("Portal camera does not have set_override_projection method, cannot set near clip plane. Please use custom Godot Build with this method implemented.");
 
-		visible_on_screen_notifier.ScreenEntered += ScreenEntered;
-		visible_on_screen_notifier.ScreenExited += ScreenExited;
+		if (portal_visual.Visible)
+		{
+			visible_on_screen_notifier.ScreenEntered += ScreenEntered;
+			visible_on_screen_notifier.ScreenExited += ScreenExited;
+		}
 
 		BodyEntered += OnBodyEntered;
 		BodyExited += OnBodyExited;
@@ -132,7 +135,7 @@ public partial class Portal : Area3D
 		RemoveTrackedPhysicsBody(player);
 		if (target is Portal target_portal)
 		{
-			// target_portal.AddTrackedPhysicsBody(player);
+			target_portal.AddTrackedPhysicsBody(player);
 			target_portal.DoUpdates();
 		}
 		
@@ -163,6 +166,13 @@ public partial class Portal : Area3D
 		{
 			return;
 		}
+
+		// foreach (TrackedPortalTraveller entry in tracked_phys_bodies)
+		// {
+		// 	if (entry.body is Player)
+		// 		GD.Print("Found tracked physics body entry for: ", entry.body.Name);
+		// }
+		
 
 		DoUpdatesIfVisible();
 	}
@@ -347,7 +357,7 @@ public partial class Portal : Area3D
 		return false;
 	}
 
-	private void OnBodyEntered(Node3D body)
+	public void OnBodyEntered(Node3D body)
 	{
 		// GD.Print("Body entered portal: ", body.Name);
 		if (CheckShapecastCollision(body))
@@ -368,7 +378,7 @@ public partial class Portal : Area3D
 		foreach (TrackedPortalTraveller entry in tracked_phys_bodies)
 		{
 			if (entry.body == body)
-			{
+			{	
 				return entry;
 			}
 		}
