@@ -48,7 +48,7 @@ public partial class Inventory : Resource
 
 			for (int i = 0; i < lines.Length; i++)
 			{
-				string itemName = lines[i].Trim();
+				string itemName = lines[i].Trim().Replace(" ", "");
 				if (!string.IsNullOrEmpty(itemName))
 				{
 					Item item = GD.Load<Item>("res://resources/items/" + itemName + ".tres");
