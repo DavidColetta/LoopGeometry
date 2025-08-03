@@ -24,7 +24,7 @@ public partial class Player : CharacterBody3D
 	{
 		base._Ready();
 
-		// Inventory.LoadItemsFromFile();
+		Inventory.LoadItemsFromFile();
 		footstepPlayer = GetNode<AudioStreamPlayer>("FootstepPlayer");
 		fallImpactPlayer = GetNode<AudioStreamPlayer>("FallImpactPlayer");
 		achievementsUi = GetNode<AchievementsUi>("AchievementsUI");

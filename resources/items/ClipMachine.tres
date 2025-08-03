@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ct8ty8ih3rmt0"]
+
+[ext_resource type="Texture2D" uid="uid://besjsylbd6pk3" path="res://resources/item_sprites/ClipFactoryInv.png" id="1_564gh"]
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="2_1vcus"]
+
+[resource]
+script = ExtResource("2_1vcus")
+itemName = "Clip Machine"
+itemDescription = ""
+itemTexture = ExtResource("1_564gh")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"

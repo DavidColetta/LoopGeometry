@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://g0sdtjk7yja4"]
+[gd_scene load_steps=3 format=3 uid="uid://g0sdtjk7yja4"]
 
-[ext_resource type="Texture2D" uid="uid://u2yksfgy22b8" path="res://resources/item_sprites/TravelerPlant.png" id="1_xsqwk"]
 [ext_resource type="Script" uid="uid://bdxss4bweg11t" path="res://player/items/Pickup.cs" id="2_on7m0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iqk3k"]
@@ -9,7 +8,6 @@ size = Vector3(2, 2.5, 2)
 [node name="Pickup" type="Sprite3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 billboard = 1
-texture = ExtResource("1_xsqwk")
 script = ExtResource("2_on7m0")
 
 [node name="Area3D" type="Area3D" parent="."]

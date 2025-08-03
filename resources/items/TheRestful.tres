@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1n8iqg3ey27b"]
+
+[ext_resource type="Texture2D" uid="uid://b31wmq71h3mwi" path="res://resources/item_sprites/TheRestful.png" id="1_i1e4g"]
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="2_n8scq"]
+
+[resource]
+script = ExtResource("2_n8scq")
+itemName = "The Restful"
+itemDescription = ""
+itemTexture = ExtResource("1_i1e4g")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b37xak0apdj2n"]
+
+[ext_resource type="Texture2D" uid="uid://dnou8yy2h1ys5" path="res://resources/item_sprites/BookwormInv.png" id="1_d5xjy"]
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="2_tggmf"]
+
+[resource]
+script = ExtResource("2_tggmf")
+itemName = "Bookworm"
+itemDescription = ""
+itemTexture = ExtResource("1_d5xjy")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"

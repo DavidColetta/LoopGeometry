@@ -15,7 +15,7 @@ public partial class Pickup : Sprite3D
 
 		area = GetNode<Area3D>("Area3D");
 
-		Texture = item.itemTexture;
+		// Texture = item.itemTexture;
 
 		area.BodyEntered += OnBodyEntered;
 	}

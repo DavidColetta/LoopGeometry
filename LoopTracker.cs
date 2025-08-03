@@ -13,7 +13,7 @@ public partial class LoopTracker : Node3D
 		int loopCount = (int)Math.Floor(teleportCount / 2f);
 		GD.Print("Loop count incremented to " + loopCount + " for body: " + body.Name);
 
-		const int targetLoopCount = 3;
+		const int targetLoopCount = 2;
 
 		if (teleportCount == targetLoopCount * 2 - 1)
 		{

@@ -7,11 +7,13 @@ public partial class InventoryDisplay : Control
 	public ItemList ItemList { get; private set; }
 	AudioStreamPlayer audioStreamPlayer;
 	AudioStreamPlayer audioStreamPlayer2;
+	Label countLabel;
 	public override void _Ready()
 	{
 		ItemList = GetNode<ItemList>("ItemList");
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		audioStreamPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
+		countLabel = GetNode<Label>("CountLabel");
 
 		Inventory.InventoryUpdated += Display;
 		Display();
@@ -54,7 +56,8 @@ public partial class InventoryDisplay : Control
 		ItemList.Clear();
 		foreach (var item in Inventory.items)
 		{
-			ItemList.AddItem("  " +item.itemName, item.itemTexture, false);
+			ItemList.AddItem("  " + item.itemName, item.itemTexture, false);
 		}
+		countLabel.Text = Inventory.items.Count.ToString() + "/6";
 	}
 }

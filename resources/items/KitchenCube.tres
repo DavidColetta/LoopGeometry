@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cq4jueeteptti"]
+
+[ext_resource type="Texture2D" uid="uid://bg0lfalgog3se" path="res://resources/item_sprites/KitchenCubeInv.png" id="1_aymso"]
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="2_mri1s"]
+
+[resource]
+script = ExtResource("2_mri1s")
+itemName = "Kitchen Cube"
+itemDescription = ""
+itemTexture = ExtResource("1_aymso")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"
