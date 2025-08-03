@@ -1008,7 +1008,7 @@ size = Vector3(4.5, 3, 4.5)
 material = ExtResource("4_igjg5")
 
 [node name="Pickup" parent="Floor/Lounge/FishTank/FishTank2" instance=ExtResource("7_nrkjx")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.924877, -1.1, 0.488325)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.924877, -0.431704, 0.488325)
 alpha_cut = 1
 item = ExtResource("6_fw3u2")
 

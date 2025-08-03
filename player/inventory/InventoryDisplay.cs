@@ -39,15 +39,15 @@ public partial class InventoryDisplay : Control
 			}
 			Display();
 		}
-		else if (@event is InputEventKey keyEvent2 && keyEvent2.Keycode == Key.Escape && keyEvent2.IsPressed())
-		{
-			if (Visible)
-			{
-				audioStreamPlayer2.Play();
-			}
-			ItemList.Clear();
-			Visible = false;
-		}
+		// else if (@event is InputEventKey keyEvent2 && keyEvent2.Keycode == Key.Escape && keyEvent2.IsPressed())
+		// {
+		// 	if (Visible)
+		// 	{
+		// 		audioStreamPlayer2.Play();
+		// 	}
+		// 	ItemList.Clear();
+		// 	Visible = false;
+		// }
 	}
 
 

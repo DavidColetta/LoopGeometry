@@ -64,9 +64,12 @@ offset_bottom = 1.0
 
 [node name="RewardPlayer" type="AudioStreamPlayer" parent="AchievementsUI"]
 stream = ExtResource("4_g6k8r")
+bus = &"SFX"
 
 [node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_yw30f")
+bus = &"SFX"
 
 [node name="FallImpactPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_qjkh3")
+bus = &"SFX"
