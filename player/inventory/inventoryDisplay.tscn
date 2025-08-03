@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://cg1nq6c1n2p2g"]
+[gd_scene load_steps=4 format=3 uid="uid://cg1nq6c1n2p2g"]
+
+[ext_resource type="Script" uid="uid://cjpkjnhyq3w4x" path="res://player/inventory/InventoryDisplay.cs" id="1_5hl83"]
+[ext_resource type="AudioStream" uid="uid://d1ar1dbxjgynb" path="res://audio/switch23.ogg" id="1_q2vo7"]
+[ext_resource type="AudioStream" uid="uid://cr7illia8xh81" path="res://audio/switch32.ogg" id="2_5hl83"]
 
 [node name="InventoryDisplay" type="Control"]
 layout_mode = 3
@@ -8,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_5hl83")
 
 [node name="ItemList" type="ItemList" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -45,3 +50,9 @@ text = "[Tab] Toggle Item List
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_q2vo7")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5hl83")

@@ -11,6 +11,12 @@ public partial class Player : CharacterBody3D
 	[Export] float sprint_multiplier = 1.5f; // Multiplier for sprinting speed
 	[Export] Vector2 max_distance_from_world_center = new Vector2(70f, 70f);
 
+	AudioStreamPlayer footstepPlayer;
+	double timeSinceLastFootstep = 0d;
+	[Export] double footstepInterval = 1d;
+	AudioStreamPlayer fallImpactPlayer;
+	double fallTimer = 0d;
+	[Export] double fallImpactThreshold = 0.4d; // Time in seconds to consider a fall for impact sound
 	float gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
 
 	public AchievementsUi achievementsUi;
@@ -19,6 +25,8 @@ public partial class Player : CharacterBody3D
 		base._Ready();
 
 		// Inventory.LoadItemsFromFile();
+		footstepPlayer = GetNode<AudioStreamPlayer>("FootstepPlayer");
+		fallImpactPlayer = GetNode<AudioStreamPlayer>("FallImpactPlayer");
 		achievementsUi = GetNode<AchievementsUi>("AchievementsUI");
 	}
 
@@ -76,6 +84,29 @@ public partial class Player : CharacterBody3D
 			// {
 			// 	velocity += UpDirection * jump_speed;
 			// }
+
+			if (!footstepPlayer.Playing && movement.Length() > 0f)
+			{
+				if (timeSinceLastFootstep >= footstepInterval / velocity.Length())
+				{
+					int randomFootstep = GD.RandRange(0, 4);
+					footstepPlayer.Stream = GD.Load<AudioStream>($"res://audio/footsteps/footstep_concrete_00{randomFootstep}.ogg");
+					footstepPlayer.Play();
+					timeSinceLastFootstep = 0f;
+				}
+				else
+				{
+					timeSinceLastFootstep += delta;
+				}
+			}
+
+			if (!fallImpactPlayer.Playing && fallTimer > fallImpactThreshold)
+			{
+				float fallImpactVolume = (float)Mathf.Clamp(fallTimer/2, fallImpactThreshold/2, fallImpactThreshold*2); // Scale volume based on fall time
+				fallImpactPlayer.VolumeDb = Mathf.LinearToDb(fallImpactVolume*2);
+				fallImpactPlayer.Play();
+			}
+			fallTimer = 0d;
 		}
 		else
 		{
@@ -85,6 +116,7 @@ public partial class Player : CharacterBody3D
 				velocity = velocity.Normalized() * terminal_velocity * Mathf.Abs(Scale.X);
 			}
 			velocity -= UpDirection * gravity * (float)delta; // Apply gravity
+			fallTimer += delta;
 		}
 
 		// Ensure the player does not move too far from the world center
@@ -106,6 +138,8 @@ public partial class Player : CharacterBody3D
 			Velocity = Vector3.Zero;
 			Position += new Vector3(0, 1, 0); // Slightly above the ground to avoid immediate collision
 		}
+
+		
 		
 		MoveAndSlide();
 	}

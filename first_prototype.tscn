@@ -25,9 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://rr5lbyylq4o5" path="res://resources/bookshelves/BookshelfT4-convcol.glb" id="24_uadjd"]
 [ext_resource type="PackedScene" uid="uid://dwg4kh7qwymt3" path="res://resources/bookshelves/BookshelfT7-convcol.glb" id="25_4p4cc"]
 [ext_resource type="PackedScene" uid="uid://beu50eock737l" path="res://resources/longtable/furnature3.glb" id="26_axiqn"]
-[ext_resource type="Texture2D" uid="uid://cagbosuxeoiul" path="res://resources/item_sprites/LiquidMaze.png" id="27_7ht5h"]
 [ext_resource type="Resource" uid="uid://cq4jueeteptti" path="res://resources/items/LiquidMaze.tres" id="28_1t53s"]
 [ext_resource type="Texture2D" uid="uid://hewcsat35ie0" path="res://resources/pine_tree/LOWBLOCKPINE3-convcol_Material Base Color.png" id="29_1t53s"]
+[ext_resource type="PackedScene" uid="uid://d1of02hq7lcnq" path="res://resources/item_models/Mancube2.glb" id="29_x7xa4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1w0b"]
 size = Vector3(11, 5.62637, 9)
@@ -711,7 +711,7 @@ transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 
 
 [node name="Pickup" parent="." instance=ExtResource("7_nrkjx")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.38, -29.3, -25.52)
-texture = ExtResource("27_7ht5h")
+texture = null
 item = ExtResource("28_1t53s")
 
 [node name="LOWBLOCKPINE3-convcol4" parent="." instance=ExtResource("22_l465l")]
@@ -729,6 +729,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -38)
 [node name="Sign" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -10.002)
 material_override = SubResource("StandardMaterial3D_x7xa4")
+use_collision = true
 size = Vector3(1, 2, 1.99961)
 
 [node name="Label3D" type="Label3D" parent="Sign"]
@@ -742,16 +743,22 @@ text = "[Tab] Toggle Item List
 [node name="Sign2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -12.1631)
 material_override = SubResource("StandardMaterial3D_x7xa4")
+use_collision = true
 size = Vector3(1, 2, 1.99961)
 
 [node name="Label3D" type="Label3D" parent="Sign2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.511325, 0.137769, 0)
-text = "This world has been
-factured. Go find
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.511325, 0.0109241, 0)
+text = "This world has 
+been twisted
+and factured. 
+Go find
  6 primordial
 objects to aid in
 comprehending
 this new world."
+
+[node name="Mancube2" parent="." instance=ExtResource("29_x7xa4")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.36522, -29.3094, -25.5283)
 
 [connection signal="PortalUsed" from="Floor/Loop1/CSGBox3D2/CSGBox3D/Portal" to="Floor/Loop1" method="IncrementLoopCount"]
 [connection signal="PortalUsed" from="TheLibraryOutside/TheLibraryOutside2/Portal" to="TheLibraryOutside/TheLibraryOutside2" method="ToggleVisibility"]
