@@ -4,6 +4,7 @@ using System;
 public partial class Pickup : Sprite3D
 {
 	[Export] public Item item;
+	[Export] public Node3D model;
 	Area3D area;
 	public override void _Ready()
 	{

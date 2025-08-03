@@ -10,14 +10,18 @@ public partial class AchievementsUi : CanvasLayer
     private VBoxContainer _container;
     private Label _templateLabel;
 
+    AudioStreamPlayer audioStreamPlayer;
+
     public override void _Ready()
     {
         _container = GetNode<VBoxContainer>("Control/VBoxContainer");
         _templateLabel = _container.GetNode<Label>("TemplateLabel");
+        audioStreamPlayer = GetNode<AudioStreamPlayer>("RewardPlayer");
     }
 
     public void ShowAchievement(string message)
     {
+        audioStreamPlayer.Play();
         Label label = (Label)_templateLabel.Duplicate();
         label.Text = message;
         label.Visible = true;

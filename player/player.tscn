@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://wi16vavper7p"]
+[gd_scene load_steps=9 format=3 uid="uid://wi16vavper7p"]
 
 [ext_resource type="Script" uid="uid://dpvd3ofa66q6i" path="res://player/Player.cs" id="1_yw30f"]
 [ext_resource type="Script" uid="uid://b6f1i0hr1qh3h" path="res://player/items/AchievementsUi.cs" id="2_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://cg1nq6c1n2p2g" path="res://player/inventory/inventoryDisplay.tscn" id="3_g6k8r"]
+[ext_resource type="AudioStream" uid="uid://dlaou3usbm7qq" path="res://audio/threeTone2.ogg" id="4_g6k8r"]
 [ext_resource type="AudioStream" uid="uid://ya1ykixd6m2y" path="res://audio/footsteps/footstep_concrete_000.ogg" id="4_yw30f"]
 [ext_resource type="AudioStream" uid="uid://cf6fp513wy82k" path="res://audio/impactPlank_medium_004.ogg" id="5_qjkh3"]
 
@@ -60,6 +61,9 @@ vertical_alignment = 1
 [node name="InventoryDisplay" parent="AchievementsUI" instance=ExtResource("3_g6k8r")]
 offset_top = 1.0
 offset_bottom = 1.0
+
+[node name="RewardPlayer" type="AudioStreamPlayer" parent="AchievementsUI"]
+stream = ExtResource("4_g6k8r")
 
 [node name="FootstepPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_yw30f")
