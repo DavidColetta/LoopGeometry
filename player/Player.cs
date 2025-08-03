@@ -136,7 +136,7 @@ public partial class Player : CharacterBody3D
 			GD.Print("Resetting character position.");
 			Transform = new Transform3D(Basis.Identity, Vector3.Zero);
 			Velocity = Vector3.Zero;
-			Position += new Vector3(0, 1, 0); // Slightly above the ground to avoid immediate collision
+			Position += new Vector3(0, 1, -8); // Slightly above the ground to avoid immediate collision
 		}
 
 		
