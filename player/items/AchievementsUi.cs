@@ -11,17 +11,23 @@ public partial class AchievementsUi : CanvasLayer
     private Label _templateLabel;
 
     AudioStreamPlayer audioStreamPlayer;
+    AudioStreamPlayer audioStreamPlayer2;
 
     public override void _Ready()
     {
         _container = GetNode<VBoxContainer>("Control/VBoxContainer");
         _templateLabel = _container.GetNode<Label>("TemplateLabel");
         audioStreamPlayer = GetNode<AudioStreamPlayer>("RewardPlayer");
+        audioStreamPlayer2 = GetNode<AudioStreamPlayer>("CompletePlayer");
     }
 
     public void ShowAchievement(string message)
     {
         audioStreamPlayer.Play();
+        if (Inventory.items.Count == 6)
+        {
+            audioStreamPlayer2.Play();
+        }
         Label label = (Label)_templateLabel.Duplicate();
         label.Text = message;
         label.Visible = true;

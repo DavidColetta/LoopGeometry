@@ -19,7 +19,7 @@ public partial class LoopTracker : Node3D
 		{
 			GD.Print("Teleport count reached");
 			portal1.target = point2;
-			teleportCount = 0; // Reset after reaching target loop count
+			teleportCount = 0;
 		}
 		else
 		{

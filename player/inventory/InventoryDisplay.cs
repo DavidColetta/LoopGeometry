@@ -8,15 +8,32 @@ public partial class InventoryDisplay : Control
 	AudioStreamPlayer audioStreamPlayer;
 	AudioStreamPlayer audioStreamPlayer2;
 	Label countLabel;
+	Label knowedgeLabel;
 	public override void _Ready()
 	{
 		ItemList = GetNode<ItemList>("ItemList");
 		audioStreamPlayer = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 		audioStreamPlayer2 = GetNode<AudioStreamPlayer>("AudioStreamPlayer2");
 		countLabel = GetNode<Label>("CountLabel");
+		knowedgeLabel = GetNode<Label>("Knowledge");
+
+		knowedgeLabel.Visible = false;
 
 		Inventory.InventoryUpdated += Display;
+		Inventory.InventoryUpdated += () =>
+		{
+			if (Inventory.items.Count == 6) // Only play sound if not already visible
+			{
+				// audioStreamPlayer3.Play();
+				knowedgeLabel.Visible = true;
+			}
+
+		};
 		Display();
+		if (Inventory.items.Count == 6)
+		{
+			knowedgeLabel.Visible = true;
+		}
 
 		Visible = false;
 	}

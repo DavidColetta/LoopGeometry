@@ -3,12 +3,11 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	//player controller that walks around the world
 	[Export] float speed = 5.0f;
 	[Export] float jump_speed = 10.0f;
 	[Export] float look_sensitivity = 0.1f;
 	[Export] float terminal_velocity = 25.0f; // Maximum speed the player can reach
-	[Export] float sprint_multiplier = 1.5f; // Multiplier for sprinting speed
+	[Export] float sprint_multiplier = 1.5f;
 	[Export] Vector2 max_distance_from_world_center = new Vector2(70f, 70f);
 
 	AudioStreamPlayer footstepPlayer;
@@ -38,7 +37,6 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		// Scale = new Vector3(Math.Abs(Scale.X), Math.Abs(Scale.Y), Math.Abs(Scale.Z)); // Ensure scale is non-negative
 		// Update up direction based on current orientation
 		UpDirection = GlobalBasis.Y.Normalized();
 		if (UpDirection.DistanceTo(Vector3.Up) < 0.1f)

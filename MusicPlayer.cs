@@ -4,8 +4,8 @@ using System;
 public partial class MusicPlayer : AudioStreamPlayer
 {
 	[Export] public AudioStream[] musicTracks;
-	[Export] public float fadeDuration = 1.0f; // Duration of the fade in/out effect
-	[Export] public bool loop = true; // Whether to loop the music
+	[Export] public float fadeDuration = 1.0f;
+	[Export] public bool loop = true;
 	private int currentTrackIndex = 0;
 	double timeSinceLastTrackChange = 0.0;
 	public override void _Ready()

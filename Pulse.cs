@@ -3,9 +3,9 @@ using System;
 
 public partial class Pulse : Node3D
 {
-    [Export] public float PulseScale = 1.1f;         // Target scale multiplier
-    [Export] public float PulseDuration = 0.5f;      // Duration of pulse animation
-    [Export] public float PulseInterval = 2.0f;      // Time between pulses
+    [Export] public float PulseScale = 1.1f;         
+    [Export] public float PulseDuration = 0.5f;      // seconds
+    [Export] public float PulseInterval = 2.0f;      // seconds
     [Export] public float RotationSpeed = 0f;     // Degrees per second
 
     private Vector3 _baseScale;
@@ -15,7 +15,6 @@ public partial class Pulse : Node3D
     {
         _baseScale = Scale;
 
-        // Set up Timer
         _timer = new Timer
         {
             WaitTime = PulseInterval,

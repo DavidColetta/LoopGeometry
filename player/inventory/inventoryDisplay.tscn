@@ -108,3 +108,12 @@ offset_top = 454.0
 offset_right = 576.0
 offset_bottom = 477.0
 text = "x/6"
+
+[node name="Knowledge" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 414.0
+offset_right = 224.0
+offset_bottom = 463.0
+text = "KNOWLEDGE OBTAINED!
+CONGRADULATIONS!!!"
