@@ -351,7 +351,7 @@ public partial class Portal : Area3D
 		try
 		{
 			shape_cast.ForceShapecastUpdate();
-		} catch (Exception e)
+		} catch (Exception)
 		{
 			// GD.PrintErr("Error forcing shapecast update: ", e.Message);
 			return false;

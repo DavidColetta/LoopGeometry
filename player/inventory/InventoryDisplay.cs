@@ -11,6 +11,9 @@ public partial class InventoryDisplay : Control
 		ItemList = GetNode<ItemList>("ItemList");
 
 		Inventory.InventoryUpdated += Display;
+		Display();
+
+		Visible = false; 
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -20,13 +23,13 @@ public partial class InventoryDisplay : Control
 		//tab
 		if (@event is InputEventKey keyEvent && keyEvent.Keycode == Key.Tab && keyEvent.IsPressed())
 		{
-			ItemList.Visible = !ItemList.Visible;
+			Visible = !Visible;
 			Display();
 		}
 		else if (@event is InputEventKey keyEvent2 && keyEvent2.Keycode == Key.Escape && keyEvent2.IsPressed())
 		{
 			ItemList.Clear();
-			ItemList.Visible = false;
+			Visible = false;
 		}
 	}
 

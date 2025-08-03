@@ -30,7 +30,7 @@ public partial class ToggleShellVisible : CsgBox3D
 	public void ToggleVisibility(Node3D body)
 	{
 
-		if (Inventory.HasItem("Strangeman's Shell"))
+		if (Inventory.HasItem(shellNode.item.itemName))
 		{
 			shellNode.Visible = false;
 			shellMirrorNode.Visible = false;

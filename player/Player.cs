@@ -35,7 +35,7 @@ public partial class Player : CharacterBody3D
 		UpDirection = GlobalBasis.Y.Normalized();
 		if (UpDirection.DistanceTo(Vector3.Up) < 0.1f)
 		{//This helps avoid Gimbal lock issues I think
-			// GD.Print("Up direction is up, resetting sky rotation.");
+		 // GD.Print("Up direction is up, resetting sky rotation.");
 			GetViewport().World3D.Environment.SkyRotation = Vector3.Zero;
 		}
 		base._PhysicsProcess(delta);
@@ -97,6 +97,16 @@ public partial class Player : CharacterBody3D
 		}
 
 		Velocity = velocity;
+
+
+		if (Input.IsActionJustPressed("reset_character"))
+		{
+			GD.Print("Resetting character position.");
+			Transform = new Transform3D(Basis.Identity, Vector3.Zero);
+			Velocity = Vector3.Zero;
+			Position += new Vector3(0, 1, 0); // Slightly above the ground to avoid immediate collision
+		}
+		
 		MoveAndSlide();
 	}
 	Vector3 ProjectOntoPlane(Vector3 vector, Vector3 planeNormal)

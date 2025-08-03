@@ -1,6 +1,5 @@
-[gd_scene load_steps=30 format=3 uid="uid://t5t3sd6y1nio"]
+[gd_scene load_steps=31 format=3 uid="uid://t5t3sd6y1nio"]
 
-[ext_resource type="PackedScene" uid="uid://wi16vavper7p" path="res://player/player.tscn" id="2_3c27s"]
 [ext_resource type="Material" uid="uid://cq0i8ja7em3hk" path="res://resources/materials/green_tiles.tres" id="2_pgi0r"]
 [ext_resource type="Material" uid="uid://cnjx2jlqnidhd" path="res://resources/materials/light_blue_tiles.tres" id="2_ug2dy"]
 [ext_resource type="Material" uid="uid://dfvarehto6xeg" path="res://resources/materials/orange_tiles.tres" id="3_af5ga"]
@@ -28,9 +27,13 @@
 [ext_resource type="PackedScene" uid="uid://beu50eock737l" path="res://resources/longtable/furnature3.glb" id="26_axiqn"]
 [ext_resource type="Texture2D" uid="uid://cagbosuxeoiul" path="res://resources/item_sprites/LiquidMaze.png" id="27_7ht5h"]
 [ext_resource type="Resource" uid="uid://cq4jueeteptti" path="res://resources/items/LiquidMaze.tres" id="28_1t53s"]
+[ext_resource type="Texture2D" uid="uid://hewcsat35ie0" path="res://resources/pine_tree/LOWBLOCKPINE3-convcol_Material Base Color.png" id="29_1t53s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1w0b"]
 size = Vector3(11, 5.62637, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7xa4"]
+albedo_texture = ExtResource("29_1t53s")
 
 [node name="FirstPrototype" type="Node3D"]
 
@@ -571,9 +574,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 75,
 target = NodePath("../Portal")
 portal_size = Vector2(150, 150)
 
-[node name="Player" parent="." instance=ExtResource("2_3c27s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -17)
-
 [node name="LOWBLOCKPINE3-convcol" parent="." instance=ExtResource("22_l465l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -11)
 
@@ -725,6 +725,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -23)
 
 [node name="LOWBLOCKPINE3-convcol7" parent="." instance=ExtResource("22_l465l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -38)
+
+[node name="Sign" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -10.002)
+material_override = SubResource("StandardMaterial3D_x7xa4")
+size = Vector3(1, 2, 1.99961)
+
+[node name="Label3D" type="Label3D" parent="Sign"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.511325, 0.204284, 0)
+text = "[Tab] Toggle Item List
+[Shift] Sprint
+[Ctrl + R] Reset Character
+(if stuck)
+"
+
+[node name="Sign2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, -12.1631)
+material_override = SubResource("StandardMaterial3D_x7xa4")
+size = Vector3(1, 2, 1.99961)
+
+[node name="Label3D" type="Label3D" parent="Sign2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.511325, 0.137769, 0)
+text = "This world has been
+factured. Go find
+ 6 primordial
+objects to aid in
+comprehending
+this new world."
 
 [connection signal="PortalUsed" from="Floor/Loop1/CSGBox3D2/CSGBox3D/Portal" to="Floor/Loop1" method="IncrementLoopCount"]
 [connection signal="PortalUsed" from="TheLibraryOutside/TheLibraryOutside2/Portal" to="TheLibraryOutside/TheLibraryOutside2" method="ToggleVisibility"]

@@ -10,7 +10,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ItemList" type="ItemList" parent="."]
-visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 250.0
@@ -23,4 +22,26 @@ allow_search = false
 max_text_lines = 3
 auto_width = true
 auto_height = true
+text_overrun_behavior = 4
 icon_scale = 0.15
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 98.0
+offset_right = 251.0
+offset_bottom = 244.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 242.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 20
+text = "[Tab] Toggle Item List
+[Shift] Sprint
+[Ctrl + R] Reset Character
+(if stuck)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
