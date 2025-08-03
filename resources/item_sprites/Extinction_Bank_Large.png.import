@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kvcy2jwrkiob"
-path.s3tc="res://.godot/imported/TheTreePine_Cube.png-13d1fd4dde8768a0564f4f89644fd239.s3tc.ctex"
+uid="uid://hlx8mnl63cbb"
+path.s3tc="res://.godot/imported/Extinction_Bank_Large.png-ccf9463c1b958d5aa05dc0ca5cf8aa54.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "49da78f607628af4cc3337aef5ed6561"
-}
 
 [deps]
 
-source_file="res://resources/pine_tree/TheTreePine_Cube.png"
-dest_files=["res://.godot/imported/TheTreePine_Cube.png-13d1fd4dde8768a0564f4f89644fd239.s3tc.ctex"]
+source_file="res://resources/item_sprites/Extinction_Bank_Large.png"
+dest_files=["res://.godot/imported/Extinction_Bank_Large.png-ccf9463c1b958d5aa05dc0ca5cf8aa54.s3tc.ctex"]
 
 [params]
 

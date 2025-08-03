@@ -1,1 +1,1 @@
-res://resources/items/TravelerPlant.tres
+res://resources/items/ExtinctionBank.tres

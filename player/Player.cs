@@ -8,6 +8,7 @@ public partial class Player : CharacterBody3D
 	[Export] float jump_speed = 10.0f;
 	[Export] float look_sensitivity = 0.1f;
 	[Export] float terminal_velocity = 25.0f; // Maximum speed the player can reach
+	[Export] float sprint_multiplier = 1.5f; // Multiplier for sprinting speed
 	[Export] Vector2 max_distance_from_world_center = new Vector2(70f, 70f);
 
 	float gravity = (float)ProjectSettings.GetSetting("physics/3d/default_gravity");
@@ -17,7 +18,7 @@ public partial class Player : CharacterBody3D
 	{
 		base._Ready();
 
-		Inventory.LoadItemsFromFile();
+		// Inventory.LoadItemsFromFile();
 		achievementsUi = GetNode<AchievementsUi>("AchievementsUI");
 	}
 
@@ -32,6 +33,11 @@ public partial class Player : CharacterBody3D
 		// Scale = new Vector3(Math.Abs(Scale.X), Math.Abs(Scale.Y), Math.Abs(Scale.Z)); // Ensure scale is non-negative
 		// Update up direction based on current orientation
 		UpDirection = GlobalBasis.Y.Normalized();
+		if (UpDirection.DistanceTo(Vector3.Up) < 0.1f)
+		{//This helps avoid Gimbal lock issues I think
+			// GD.Print("Up direction is up, resetting sky rotation.");
+			GetViewport().World3D.Environment.SkyRotation = Vector3.Zero;
+		}
 		base._PhysicsProcess(delta);
 
 		Vector3 velocity = Velocity;
@@ -58,7 +64,12 @@ public partial class Player : CharacterBody3D
 		Vector3 prev_horizontal_velocity = ProjectOntoPlane(velocity, UpDirection);
 		velocity -= prev_horizontal_velocity;
 		// Add new horizontal velocity
-		velocity += movement * speed * Math.Abs(Scale.X); // Scale.X is used to adjust speed based on the player's scale
+		float real_speed = speed * Math.Abs(Scale.X);
+		if (Input.IsActionPressed("sprint"))
+		{
+			real_speed *= sprint_multiplier;
+		}
+		velocity += movement * real_speed; // Scale.X is used to adjust speed based on the player's scale
 		if (IsOnFloor())
 		{
 			// if (Input.IsActionJustPressed("jump"))

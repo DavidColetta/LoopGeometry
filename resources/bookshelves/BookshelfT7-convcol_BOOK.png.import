@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx1yqipmyg3yn"
-path.s3tc="res://.godot/imported/Bookshelf_Material Base Color.png-c20305dfd1fa1318cfa8366a336a1de4.s3tc.ctex"
+uid="uid://dtq1o0qgqxc8o"
+path.s3tc="res://.godot/imported/BookshelfT7-convcol_BOOK.png-30bd2087698dcacd194cd98c02e432a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "1874d9286daa7d7f6bc8d2880cdda9a5"
+"md5": "c97d46a7014e8f8b0aa124a4c15334a2"
 }
 
 [deps]
 
-source_file="res://resources/bookshelves/Bookshelf_Material Base Color.png"
-dest_files=["res://.godot/imported/Bookshelf_Material Base Color.png-c20305dfd1fa1318cfa8366a336a1de4.s3tc.ctex"]
+source_file="res://resources/bookshelves/BookshelfT7-convcol_BOOK.png"
+dest_files=["res://.godot/imported/BookshelfT7-convcol_BOOK.png-30bd2087698dcacd194cd98c02e432a9.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@ using System;
 
 public partial class ToggleShellVisible : CsgBox3D
 {
-	[Export] public Node3D shellNode;
+	[Export] public Pickup shellNode;
 	[Export] public Node3D shellMirrorNode;
 	public override void _Ready()
 	{
@@ -15,7 +15,7 @@ public partial class ToggleShellVisible : CsgBox3D
 
 	public void Setup()
 	{
-		if (Inventory.HasItem("Strangeman's Shell"))
+		if (Inventory.HasItem(shellNode.item.itemName))
 		{
 			shellNode.Visible = false;
 			shellMirrorNode.Visible = false;

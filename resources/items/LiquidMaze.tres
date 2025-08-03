@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cq4jueeteptti"]
+
+[ext_resource type="Texture2D" uid="uid://cagbosuxeoiul" path="res://resources/item_sprites/LiquidMaze.png" id="1_f35y5"]
+[ext_resource type="Script" uid="uid://4nrvp7yeworg" path="res://player/items/Item.cs" id="1_l72y0"]
+
+[resource]
+script = ExtResource("1_l72y0")
+itemName = "Liquid Maze"
+itemDescription = ""
+itemTexture = ExtResource("1_f35y5")
+metadata/_custom_type_script = "uid://4nrvp7yeworg"

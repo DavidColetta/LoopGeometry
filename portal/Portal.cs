@@ -5,6 +5,8 @@ using System.Drawing;
 [Tool]
 public partial class Portal : Area3D
 {
+	//Based on:
+	//https://github.com/majikayogames/portal_demo/blob/main/Portals/Portal.gd#L332
 	[Signal] public delegate void PortalUsedEventHandler(Node3D body);
 	[Export] public Node3D target;
 	// [Export] public int cull_layer = 4;
@@ -346,14 +348,21 @@ public partial class Portal : Area3D
 
 	private bool CheckShapecastCollision(Node3D body)
 	{
-		shape_cast.ForceShapecastUpdate();
-		for (int i = 0; i < shape_cast.GetCollisionCount(); i++)
+		try
 		{
-			if (shape_cast.GetCollider(i) == body)
-			{
-				return true;
-			}
+			shape_cast.ForceShapecastUpdate();
+		} catch (Exception e)
+		{
+			// GD.PrintErr("Error forcing shapecast update: ", e.Message);
+			return false;
 		}
+		for (int i = 0; i < shape_cast.GetCollisionCount(); i++)
+			{
+				if (shape_cast.GetCollider(i) == body)
+				{
+					return true;
+				}
+			}
 		return false;
 	}
 

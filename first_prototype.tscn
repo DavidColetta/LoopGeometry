@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://t5t3sd6y1nio"]
+[gd_scene load_steps=30 format=3 uid="uid://t5t3sd6y1nio"]
 
 [ext_resource type="PackedScene" uid="uid://wi16vavper7p" path="res://player/player.tscn" id="2_3c27s"]
 [ext_resource type="Material" uid="uid://cq0i8ja7em3hk" path="res://resources/materials/green_tiles.tres" id="2_pgi0r"]
@@ -14,15 +14,20 @@
 [ext_resource type="Resource" uid="uid://d1n8iqg3ey27b" path="res://resources/items/TravelerPlant.tres" id="8_t4n5b"]
 [ext_resource type="Texture2D" uid="uid://wxlfvcpp1cc3" path="res://resources/item_sprites/PipeMachine.png" id="9_7yoy4"]
 [ext_resource type="Resource" uid="uid://b37xak0apdj2n" path="res://resources/items/PipeMachine.tres" id="10_jm0pe"]
-[ext_resource type="PackedScene" uid="uid://b2n84nqyvgn16" path="res://resources/pine_tree/TheTreePine.glb" id="11_56cti"]
 [ext_resource type="Material" uid="uid://obwptesybjff" path="res://resources/materials/purple.tres" id="12_nl05l"]
-[ext_resource type="PackedScene" uid="uid://43cofv207ihd" path="res://resources/bookshelves/Bookshelf.glb" id="14_hlkmk"]
 [ext_resource type="Script" uid="uid://561ddacqh8fg" path="res://ToggleShellVisible.cs" id="15_nw2kp"]
-[ext_resource type="Resource" uid="uid://gk467mcj06m7" path="res://resources/items/StrangemansShell.tres" id="16_okcvt"]
+[ext_resource type="Resource" uid="uid://nor5tbrxyh1x" path="res://resources/items/ExtinctionBank.tres" id="17_7ht5h"]
 [ext_resource type="Script" uid="uid://dvit0hit4nsi4" path="res://AreaTrigger.cs" id="17_fw3u2"]
-[ext_resource type="Texture2D" uid="uid://clgiobx5d60t7" path="res://resources/item_sprites/StrangemansShell.png" id="18_bw4uo"]
+[ext_resource type="Texture2D" uid="uid://hlx8mnl63cbb" path="res://resources/item_sprites/Extinction_Bank_Large.png" id="18_1t53s"]
 [ext_resource type="Texture2D" uid="uid://cxbxkqdw83ptb" path="res://resources/item_sprites/TheObjectFromEarth.png" id="21_l465l"]
+[ext_resource type="PackedScene" uid="uid://brsjw027xfeaj" path="res://resources/pine_tree/LOWBLOCKPINE3-convcol.glb" id="22_l465l"]
 [ext_resource type="Resource" uid="uid://ct8ty8ih3rmt0" path="res://resources/items/TheObjectFromEarth.tres" id="22_nl05l"]
+[ext_resource type="PackedScene" uid="uid://pmcwwluv4vki" path="res://resources/chair/Chair.glb" id="23_nl05l"]
+[ext_resource type="PackedScene" uid="uid://rr5lbyylq4o5" path="res://resources/bookshelves/BookshelfT4-convcol.glb" id="24_uadjd"]
+[ext_resource type="PackedScene" uid="uid://dwg4kh7qwymt3" path="res://resources/bookshelves/BookshelfT7-convcol.glb" id="25_4p4cc"]
+[ext_resource type="PackedScene" uid="uid://beu50eock737l" path="res://resources/longtable/furnature3.glb" id="26_axiqn"]
+[ext_resource type="Texture2D" uid="uid://cagbosuxeoiul" path="res://resources/item_sprites/LiquidMaze.png" id="27_7ht5h"]
+[ext_resource type="Resource" uid="uid://cq4jueeteptti" path="res://resources/items/LiquidMaze.tres" id="28_1t53s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1w0b"]
 size = Vector3(11, 5.62637, 9)
@@ -44,7 +49,7 @@ material = ExtResource("2_ug2dy")
 [node name="Label3D" type="Label3D" parent="Floor/Lounge"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.83424, -1.14496, 0)
 alpha_cut = 1
-text = "If you see
+text = "If you ever see
 a bean can,
 turn around"
 
@@ -87,7 +92,9 @@ operation = 2
 size = Vector3(5, 2.1, 1.6)
 
 [node name="Portal" parent="Floor/LoungeEntrance2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.67777, 0, 0)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 10.8, -20.45, -11.6778)
+rotation_edit_mode = 2
+top_level = true
 target = NodePath("../../LibraryInterior/LoungeExit/LoungeExit2/Portal")
 portal_size = Vector2(1.6, 2.1)
 
@@ -212,11 +219,14 @@ size = Vector3(2, 2.7, 2.84893)
 
 [node name="LoungeExit2" type="CSGBox3D" parent="Floor/LibraryInterior/LoungeExit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.490515)
+rotation_edit_mode = 2
 operation = 2
 size = Vector3(1.6, 2.1, 3.81897)
 
 [node name="Portal" parent="Floor/LibraryInterior/LoungeExit/LoungeExit2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.30634)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.75, -9.5747, -19.4086)
+rotation_edit_mode = 2
+top_level = true
 target = NodePath("../../../../LoungeEntrance2/Portal")
 portal_size = Vector2(1.6, 2.1)
 
@@ -262,16 +272,17 @@ target = NodePath("../../../Doorway3/Doorway/Portal")
 portal_size = Vector2(3, 1.6)
 
 [node name="Doorway5" type="CSGBox3D" parent="Floor/LibraryInterior"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 2.65, 4, -11.0471)
-size = Vector3(3, 8.1, 1.6)
+transform = Transform3D(1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -4.37114e-08, 1, -4.37114e-08, 2.65, 4, -10.8471)
+size = Vector3(3, 7.7, 1.6)
 
 [node name="Portal" parent="Floor/LibraryInterior/Doorway5" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(1, -8.74228e-08, 8.74228e-08, 8.74228e-08, -4.37114e-08, -1, 8.74228e-08, 1, -4.37114e-08, -2.38419e-07, -3.3, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.38419e-07, -3.3, 0)
+rotation_edit_mode = 2
 target = NodePath("../../Doorway6/Doorway7/Portal")
 portal_size = Vector2(3, 1.6)
 
 [node name="Doorway6" type="CSGBox3D" parent="Floor/LibraryInterior"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -4.8, 4.48, 8.45)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, -3.59989e-21, 4.37114e-08, 1, -4.37114e-08, -4.8, 4.48, 8.45)
 size = Vector3(3, 3, 1.6)
 
 [node name="Doorway" type="CSGBox3D" parent="Floor/LibraryInterior/Doorway6"]
@@ -283,7 +294,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 3.2)
 size = Vector3(3, 3, 1.6)
 
 [node name="Portal" parent="Floor/LibraryInterior/Doorway6/Doorway7" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0)
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0.5, 0)
+rotation_edit_mode = 2
 target = NodePath("../../../Doorway5/Portal")
 portal_size = Vector2(3, 1.6)
 
@@ -291,6 +303,21 @@ portal_size = Vector2(3, 1.6)
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.6, -1.6, -5.8)
 texture = ExtResource("9_7yoy4")
 item = ExtResource("10_jm0pe")
+
+[node name="Mousehole" type="CSGBox3D" parent="Floor/LibraryInterior"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.92, -9.875, 6.9)
+size = Vector3(0.188, 0.25, 1.2)
+material = ExtResource("12_nl05l")
+
+[node name="Mousehole2" type="CSGBox3D" parent="Floor/LibraryInterior/Mousehole"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.515, 0, -0.505)
+size = Vector3(0.188, 0.25, 1.2)
+material = ExtResource("12_nl05l")
+
+[node name="Portal" parent="Floor/LibraryInterior/Mousehole/Mousehole2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+target = NodePath("../../../../MouseHouse/Entrance/Portal")
+portal_size = Vector2(1.5, 2)
 
 [node name="Loop2" type="CSGCombiner3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.1, 16)
@@ -307,10 +334,10 @@ size = Vector3(3, 3.2, 3)
 material = ExtResource("4_c1877")
 
 [node name="2ndLoopTarget" type="Node3D" parent="Floor/Loop2/CSGBox3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2.2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, -2.2)
 
 [node name="Portal" parent="Floor/Loop2/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2.2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 2.2)
 target = NodePath("../../../Loop3/CSGBox3D/3rdLoopTarget")
 portal_size = Vector2(1.6, 3.2)
 
@@ -340,11 +367,11 @@ size = Vector3(3, 3.2, 3)
 material = ExtResource("4_c1877")
 
 [node name="3rdLoopTarget" type="Node3D" parent="Floor/Loop3/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, -4.47035e-08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, -0.5)
 
 [node name="Portal" parent="Floor/Loop3/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2.2)
-target = NodePath("../../../Loop1/CSGBox3D2/CSGBox3D/Portal")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 2.2)
+target = NodePath("../../../Loop1/CSGBox3D2/CSGBox3D/1stLoopTarget2")
 portal_size = Vector2(1.6, 3.2)
 
 [node name="Portal2" parent="Floor/Loop3/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
@@ -369,10 +396,6 @@ material = ExtResource("12_nl05l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.632, -0.9, 0.25)
 size = Vector3(3.76855, 3.2, 1.5)
 material = ExtResource("4_c1877")
-
-[node name="TravelerPlant" parent="Floor/EndOfLoopRoom" instance=ExtResource("7_nrkjx")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -1.2, 0.25)
-item = ExtResource("8_t4n5b")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.75, -1, 4)
@@ -399,9 +422,18 @@ size = Vector3(5, 3.2, 1.5)
 material = ExtResource("4_c1877")
 
 [node name="Portal" parent="Floor/EndOfLoopRoom/Entrance2" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -0.05)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -0.05)
 target = NodePath("../../../Loop1/CSGBox3D2/CSGBox3D/1stLoopTarget")
 portal_size = Vector2(1.6, 3.2)
+
+[node name="Mousehole" type="CSGBox3D" parent="Floor/EndOfLoopRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.94417, -2.3, 0.2)
+size = Vector3(0.313, 0.375, 0.4)
+material = ExtResource("12_nl05l")
+
+[node name="TravelerPlant" parent="Floor/EndOfLoopRoom/Mousehole" instance=ExtResource("7_nrkjx")]
+transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0.00499988, -0.00999928, -0.0108321)
+item = ExtResource("8_t4n5b")
 
 [node name="Loop1" type="CSGCombiner3D" parent="Floor" node_paths=PackedStringArray("portal1", "point1", "point2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.6, 16)
@@ -428,10 +460,13 @@ size = Vector3(3, 3.2, 3)
 material = ExtResource("4_c1877")
 
 [node name="1stLoopTarget" type="Node3D" parent="Floor/Loop1/CSGBox3D2/CSGBox3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2.2)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, -2.2)
+
+[node name="1stLoopTarget2" type="Node3D" parent="Floor/Loop1/CSGBox3D2/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, -2.2)
 
 [node name="Portal" parent="Floor/Loop1/CSGBox3D2/CSGBox3D" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2.2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 2.2)
 target = NodePath("../1stLoopTarget")
 portal_size = Vector2(1.6, 3.2)
 
@@ -445,6 +480,21 @@ material = ExtResource("4_c1877")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49, 0.365001, -2.45)
 size = Vector3(0.02, 3.2, 1.9)
 material = ExtResource("4_c1877")
+
+[node name="MouseHouse" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69417, -2.5, -9.9)
+operation = 2
+size = Vector3(8, 6, 10)
+material = ExtResource("12_nl05l")
+
+[node name="Entrance" type="CSGBox3D" parent="Floor/MouseHouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -2, 5.4)
+size = Vector3(1.5, 2, 1.2)
+material = ExtResource("12_nl05l")
+
+[node name="Portal" parent="Floor/MouseHouse/Entrance" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
+target = NodePath("../../../LibraryInterior/Mousehole/Mousehole2/Portal")
+portal_size = Vector2(1.5, 2)
 
 [node name="TheLibraryOutside" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.25, -27)
@@ -487,38 +537,19 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.748
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5.65, -6.31)
 visible = false
 layers = 8
-texture = ExtResource("18_bw4uo")
-item = ExtResource("16_okcvt")
+texture = ExtResource("18_1t53s")
+item = ExtResource("17_7ht5h")
 
 [node name="PickupMirrorView" type="Sprite3D" parent="TheLibraryOutside/TheLibraryOutside2"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -5.65, -6.31)
 layers = 512
 billboard = 1
-texture = ExtResource("18_bw4uo")
+texture = ExtResource("18_1t53s")
 
 [node name="Pickup" parent="TheLibraryOutside" instance=ExtResource("7_nrkjx")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.5, 6.75, 0)
 texture = ExtResource("21_l465l")
 item = ExtResource("22_nl05l")
-
-[node name="TravelerPlant" parent="." instance=ExtResource("7_nrkjx")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.8, -5.75)
-item = ExtResource("8_t4n5b")
-
-[node name="TheTreePine" parent="." instance=ExtResource("11_56cti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -18)
-
-[node name="TheTreePine2" parent="." instance=ExtResource("11_56cti")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -11)
-
-[node name="Bookshelf" parent="." instance=ExtResource("14_hlkmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, -22.4, -32)
-
-[node name="Bookshelf2" parent="." instance=ExtResource("14_hlkmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -9.3, -20)
-
-[node name="Bookshelf3" parent="." instance=ExtResource("14_hlkmk")]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -7, -14.1, -20)
 
 [node name="AquariumArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -19.4, -4.2)
@@ -541,7 +572,159 @@ target = NodePath("../Portal")
 portal_size = Vector2(150, 150)
 
 [node name="Player" parent="." instance=ExtResource("2_3c27s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -12, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -17)
+
+[node name="LOWBLOCKPINE3-convcol" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -11)
+
+[node name="LOWBLOCKPINE3-convcol2" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -5)
+
+[node name="LOWBLOCKPINE3-convcol3" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -29)
+
+[node name="Chair" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(1.74846e-08, 0.4, 1.74846e-08, 0.4, -1.74846e-08, -1.74846e-08, -1.74846e-08, 1.74846e-08, -0.4, -8.8, -8, -19.2)
+
+[node name="BookshelfT4-convcol" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.9, -22.325, -20.825)
+
+[node name="BookshelfT7-convcol" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.9, -22.3, -21)
+
+[node name="BookshelfT7-convcol2" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -2, -19.2, -31.9)
+
+[node name="BookshelfT4-convcol2" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -22.3, -31.9)
+
+[node name="BookshelfT4-convcol3" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(0, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 6.7, -4.4, -31)
+
+[node name="Chair2" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(1.74846e-08, -0.4, 1.52855e-15, -0.4, -1.74846e-08, -3.49691e-08, 3.49691e-08, -1.05879e-22, -0.4, 7.8, -12.2, -19.12)
+
+[node name="BookshelfT7-convcol3" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(0, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 6.6, -4, -20.6)
+
+[node name="BookshelfT7-convcol4" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.9, -19.3, -20.825)
+
+[node name="BookshelfT7-convcol5" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(0, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 6.6, -11.4, -28)
+
+[node name="BookshelfT4-convcol4" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(0, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 3.6, -11.4, -28)
+
+[node name="BookshelfT7-convcol6" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, -9.3, -19.8)
+
+[node name="Chair3" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -1.86, -10.5, -21.2)
+
+[node name="BookshelfT4-convcol5" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.7, -6, -31.9)
+
+[node name="Chair4" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -8.12, -15.6, -32)
+
+[node name="Chair5" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.4, 0, 2.54292e-08, 0, 0.4, 0, -2.54292e-08, 0, 0.4, -8.08, -23.48, -31.752)
+
+[node name="Chair6" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, -3.0571e-15, 3.49691e-08, 2.11758e-22, -0.4, -3, -13, -20)
+
+[node name="BookshelfT4-convcol6" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -7, -14.2, -19.8)
+
+[node name="Chair7" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-0.4, -3.49691e-08, 2.54292e-08, 3.49691e-08, -0.4, 0, 2.54292e-08, 2.22309e-15, 0.4, -5.28, -18.08, -32.152)
+
+[node name="Chair8" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, 0.4, 2.54292e-08, -0.4, -1.74846e-08, -1.77636e-15, -1.77636e-15, -2.54292e-08, 0.4, -8.8, -18.68, -32.112)
+
+[node name="BookshelfT7-convcol7" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, -22.3, -31.9)
+
+[node name="Chair9" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0, 0.4, 7.84, -17, -32.36)
+
+[node name="Chair10" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, 0.4, 2.54292e-08, -0.4, -1.74846e-08, -1.77636e-15, -1.77636e-15, -2.54292e-08, 0.4, -8.8, -8.52, -32.352)
+
+[node name="Chair11" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-0.4, -3.49691e-08, 0, 3.49691e-08, -0.4, 0, 0, 0, 0.4, -4, -3.48, -32.36)
+
+[node name="BookshelfT7-convcol8" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -1, -4.6, -32)
+
+[node name="Chair12" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.4, -3.49691e-08, 3.49691e-08, -3.49691e-08, -0.4, -3.0571e-15, 3.49691e-08, 2.11758e-22, -0.4, -4, -3.48, -19.16)
+
+[node name="BookshelfT7-convcol9" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -7.1, -4.6, -19.7)
+
+[node name="BookshelfT7-convcol10" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, 1, 0, -1, -8.74228e-08, 1, -3.82137e-15, 4.37114e-08, 6.9, -4.6, -25)
+
+[node name="Chair13" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.76, -23.48, -32.32)
+
+[node name="Chair14" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 7.36, -23.48, -23.2)
+
+[node name="BookshelfT4-convcol7" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, -22.3, -31.9)
+
+[node name="BookshelfT7-convcol11" parent="." instance=ExtResource("25_4p4cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, -19.3, -31.9)
+
+[node name="BookshelfT4-convcol8" parent="." instance=ExtResource("24_uadjd")]
+transform = Transform3D(-4.37114e-08, 0, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 0, 6.9, -14, -31.7)
+
+[node name="furnature3" parent="." instance=ExtResource("26_axiqn")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 1.32, -30.52, -26.16)
+
+[node name="Chair15" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0.48, -30.5, -26.32)
+
+[node name="Chair21" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.102606, 0, 0.281908, 0, 0.3, 0, -0.281908, 0, 0.102606, 0.540782, -30.5, -25.5646)
+
+[node name="Chair27" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.09278e-08, 0.204788, 0.143394, 0, 0.143394, -0.204788, -0.25, -8.95157e-09, -6.26796e-09, -0.0232467, -30.604, -24.88)
+
+[node name="Chair18" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 1.98, -30.5, -26.92)
+
+[node name="Chair19" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 2.1, -30.5, -24.76)
+
+[node name="Chair20" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 2.34, -30.5, -25.75)
+
+[node name="Chair16" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.38, -30.5, -27.82)
+
+[node name="Chair17" parent="." instance=ExtResource("23_nl05l")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, 1.38, -30.5, -23.92)
+
+[node name="Pickup" parent="." instance=ExtResource("7_nrkjx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 1.38, -29.3, -25.52)
+texture = ExtResource("27_7ht5h")
+item = ExtResource("28_1t53s")
+
+[node name="LOWBLOCKPINE3-convcol4" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -36)
+
+[node name="LOWBLOCKPINE3-convcol5" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="LOWBLOCKPINE3-convcol6" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -23)
+
+[node name="LOWBLOCKPINE3-convcol7" parent="." instance=ExtResource("22_l465l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -38)
 
 [connection signal="PortalUsed" from="Floor/Loop1/CSGBox3D2/CSGBox3D/Portal" to="Floor/Loop1" method="IncrementLoopCount"]
 [connection signal="PortalUsed" from="TheLibraryOutside/TheLibraryOutside2/Portal" to="TheLibraryOutside/TheLibraryOutside2" method="ToggleVisibility"]
