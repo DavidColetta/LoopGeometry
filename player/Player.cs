@@ -87,7 +87,7 @@ public partial class Player : CharacterBody3D
 
 			if (!footstepPlayer.Playing && movement.Length() > 0f)
 			{
-				if (timeSinceLastFootstep >= footstepInterval / velocity.Length())
+				if (timeSinceLastFootstep >= footstepInterval / (velocity.Length() / Math.Abs(Scale.X)))
 				{
 					int randomFootstep = GD.RandRange(0, 4);
 					footstepPlayer.Stream = GD.Load<AudioStream>($"res://audio/footsteps/footstep_concrete_00{randomFootstep}.ogg");

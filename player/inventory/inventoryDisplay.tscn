@@ -53,6 +53,8 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_q2vo7")
+bus = &"MenuClick"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_5hl83")
+bus = &"MenuClick"

@@ -1,2 +1,0 @@
-res://resources/items/TheFishThatTraveledThroughTime.tres
-res://resources/items/PipeMachine.tres

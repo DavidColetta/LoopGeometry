@@ -71,7 +71,7 @@ environment = SubResource("Environment_jnlp7")
 [node name="FirstPrototype" parent="." instance=ExtResource("3_vvh5c")]
 
 [node name="Player" parent="." instance=ExtResource("2_pyidc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26, -23)
 
 [node name="LOWBLOCKPINE3-convcol" parent="." instance=ExtResource("3_28aoi")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5, -16, 9)
