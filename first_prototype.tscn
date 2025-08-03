@@ -1414,6 +1414,11 @@ item = ExtResource("8_t4n5b")
 transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, 0, -3.4, 0)
 script = ExtResource("29_mvas7")
 
+[node name="Label3D" type="Label3D" parent="Floor/EndOfLoopRoom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.72712, 0, 0.27549)
+text = "The Inner Loop"
+font_size = 80
+
 [node name="Loop1" type="CSGCombiner3D" parent="Floor" node_paths=PackedStringArray("portal1", "point1", "point2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.6, 16)
 use_collision = true
@@ -1460,6 +1465,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49, 0.365001, -2.45)
 size = Vector3(0.02, 3.2, 1.9)
 material = ExtResource("4_c1877")
 
+[node name="Label3D" type="Label3D" parent="Floor/Loop1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.247479, 0.694844, -3.37447)
+text = "The Loop"
+font_size = 120
+
 [node name="MouseHouse" type="CSGBox3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69417, -2.5, -9.9)
 operation = 2
@@ -1474,6 +1484,11 @@ material = ExtResource("12_nl05l")
 [node name="Portal" parent="Floor/MouseHouse/Entrance" node_paths=PackedStringArray("target") instance=ExtResource("5_xgr5p")]
 target = NodePath("../../../LibraryInterior/Mousehole/Mousehole2/Portal")
 portal_size = Vector2(1.5, 2)
+
+[node name="Label3D" type="Label3D" parent="Floor/MouseHouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.303591, -0.471083, -4.97919)
+text = "Mouse House"
+font_size = 80
 
 [node name="TheLibraryOutside" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 6.25, -27)
@@ -1704,6 +1719,16 @@ item = ExtResource("22_nl05l")
 [node name="clipfactory" parent="TheLibraryOutside/Pickup" instance=ExtResource("22_mvas7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.2, -0.8)
 script = ExtResource("29_mvas7")
+
+[node name="Label3D" type="Label3D" parent="TheLibraryOutside"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0144002, -0.865636, 6.01056)
+text = "The Library"
+font_size = 160
+
+[node name="Label3D2" type="Label3D" parent="TheLibraryOutside"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0144002, -0.865636, -6.05416)
+text = "Storage"
+font_size = 160
 
 [node name="AquariumArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, -19.4, -4.2)
